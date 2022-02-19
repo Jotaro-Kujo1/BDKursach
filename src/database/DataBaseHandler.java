@@ -28,4 +28,15 @@ public class DataBaseHandler {
         }
     }
 
+    public void userRegistration(String login, String password){
+        String sqlQuery = "INSERT INTO users (login, password) VALUES(?,?)";
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.setString(1, login);
+            statement.setString(2, password);
+            statement.execute();
+        }catch (ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+
 }

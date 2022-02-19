@@ -7,8 +7,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SingInController">
    <children>
-      <Button fx:id="signInButton" layoutX="230.0" layoutY="278.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #696969;" text="Sign in" textFill="WHITE" />
+      <Button fx:id="signInButton" layoutX="141.0" layoutY="278.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #696969;" text="Sign in" textFill="WHITE" />
       <TextField fx:id="loginTextArea" layoutX="182.0" layoutY="140.0" prefHeight="32.0" prefWidth="236.0" promptText="Login" />
       <PasswordField fx:id="passwordTextArea" layoutX="182.0" layoutY="200.0" prefHeight="32.0" prefWidth="236.0" promptText="Password" />
+      <Button fx:id="regButton" layoutX="314.0" layoutY="278.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" style="-fx-background-color: #696969;" text="Registration" textFill="WHITE" />
    </children>
 </AnchorPane>

@@ -14,7 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SingInController {
+public class RegistrationController {
 
     private DataBaseHandler db = new DataBaseHandler();
     @FXML
@@ -24,46 +24,30 @@ public class SingInController {
     private URL location;
 
     @FXML
-    private Button signInButton;
-
-    @FXML
     private Button regButton;
 
     @FXML
     private TextField loginTextArea;
 
     @FXML
-    private PasswordField passwordTextArea;
+    private TextField passwordTextArea;
+
+    @FXML
+    private Button backButton;
 
     @FXML
     void initialize() {
-        signInButton.setOnAction(event -> {
-            if(db.userSignIn(loginTextArea.getText().trim(),passwordTextArea.getText().trim())) toMainPane();
+        regButton.setOnAction(event -> {
+            db.userRegistration(loginTextArea.getText().trim(), passwordTextArea.getText().trim());
         });
 
-        regButton.setOnAction(event -> toRegPane());
-
+        backButton.setOnAction(event -> toSignInPane());
     }
 
-    private void toMainPane(){
-        signInButton.getScene().getWindow().hide();
+    private void toSignInPane() {
+        backButton.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../recourses/mainPane.fxml"));
-        try{
-            loader.load();
-        }catch (IOException ex){
-            ex.printStackTrace();
-        }
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
-    }
-
-    private void toRegPane(){
-        regButton.getScene().getWindow().hide();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../recourses/registrationPane.fxml"));
+        loader.setLocation(getClass().getResource("../recourses/signInPane.fxml"));
         try{
             loader.load();
         }catch (IOException ex){
