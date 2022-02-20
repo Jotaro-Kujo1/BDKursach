@@ -37,10 +37,15 @@ public class SingInController {
 
     @FXML
     void initialize() {
+        signInButton.setOnMouseEntered(event -> signInButton.setStyle("-fx-background-color: #808080;"));
+        signInButton.setOnMouseExited(event -> signInButton.setStyle("-fx-background-color: #696969;"));
         signInButton.setOnAction(event -> {
             if(db.userSignIn(loginTextArea.getText().trim(),passwordTextArea.getText().trim())) toMainPane();
         });
 
+
+        regButton.setOnMouseEntered(event -> regButton.setStyle("-fx-background-color: #808080;"));
+        regButton.setOnMouseExited(event -> regButton.setStyle("-fx-background-color: #696969;"));
         regButton.setOnAction(event -> toRegPane());
 
     }

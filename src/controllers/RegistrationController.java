@@ -44,6 +44,8 @@ public class RegistrationController {
 
     @FXML
     void initialize() {
+        regButton.setOnMouseEntered(event -> regButton.setStyle("-fx-background-color: #808080;"));
+        regButton.setOnMouseExited(event -> regButton.setStyle("-fx-background-color: #696969;"));
         regButton.setOnAction(event -> {
             if(db.userRegistration(loginTextArea.getText().trim(), passwordTextArea.getText().trim())){
                 RegModalWindow.newWindow();
@@ -51,6 +53,9 @@ public class RegistrationController {
             }
         });
 
+
+        backButton.setOnMouseEntered(event -> backButton.setStyle("-fx-background-color: #808080;"));
+        backButton.setOnMouseExited(event -> backButton.setStyle("-fx-background-color: #696969;"));
         backButton.setOnAction(event -> toSignInPane());
     }
 
