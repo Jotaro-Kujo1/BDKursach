@@ -15,7 +15,7 @@ public class DataBaseHandler {
 
     public boolean userSignIn(String login, String password){
         ResultSet rset = null;
-        String sqlQuery = "SELECT * FROM users WHERE login =? AND password =?";
+        String sqlQuery = "SELECT * FROM users WHERE Логин =? AND Пароль =?";
         try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
             statement.setString(1,login);
             statement.setString(2,password);
@@ -28,14 +28,16 @@ public class DataBaseHandler {
         }
     }
 
-    public void userRegistration(String login, String password){
-        String sqlQuery = "INSERT INTO users (login, password) VALUES(?,?)";
+    public boolean userRegistration(String login, String password){
+        String sqlQuery = "INSERT INTO users (Логин, Пароль) VALUES(?,?)";
         try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
             statement.setString(1, login);
             statement.setString(2, password);
             statement.execute();
+            return true;
         }catch (ClassNotFoundException | SQLException ex){
             ex.printStackTrace();
+            return false;
         }
     }
 

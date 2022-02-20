@@ -1,17 +1,24 @@
 package controllers;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ModalWindows.RegModalWindow;
 import database.DataBaseHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class RegistrationController {
@@ -38,7 +45,10 @@ public class RegistrationController {
     @FXML
     void initialize() {
         regButton.setOnAction(event -> {
-            db.userRegistration(loginTextArea.getText().trim(), passwordTextArea.getText().trim());
+            if(db.userRegistration(loginTextArea.getText().trim(), passwordTextArea.getText().trim())){
+                RegModalWindow.newWindow();
+                toSignInPane();
+            }
         });
 
         backButton.setOnAction(event -> toSignInPane());
@@ -46,6 +56,7 @@ public class RegistrationController {
 
     private void toSignInPane() {
         backButton.getScene().getWindow().hide();
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../recourses/signInPane.fxml"));
         try{
@@ -58,4 +69,7 @@ public class RegistrationController {
         stage.setScene(new Scene(root));
         stage.showAndWait();
     }
+
+
+
 }
