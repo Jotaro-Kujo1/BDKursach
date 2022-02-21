@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class RegistrationController implements ToPane{
@@ -58,11 +59,9 @@ public class RegistrationController implements ToPane{
         }
         Parent root = loader.getRoot();
         Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
         stage.showAndWait();
     }
-
-
-
 
 }
