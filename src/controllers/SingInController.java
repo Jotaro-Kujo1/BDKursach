@@ -14,7 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SingInController {
+public class SingInController implements ToPane{
 
     private DataBaseHandler db = new DataBaseHandler();
     @FXML
@@ -40,7 +40,10 @@ public class SingInController {
         signInButton.setOnMouseEntered(event -> signInButton.setStyle("-fx-background-color: #808080;"));
         signInButton.setOnMouseExited(event -> signInButton.setStyle("-fx-background-color: #696969;"));
         signInButton.setOnAction(event -> {
-            if(db.userSignIn(loginTextArea.getText().trim(),passwordTextArea.getText().trim())) toMainPane();
+            if(db.userSignIn(loginTextArea.getText().trim(),passwordTextArea.getText().trim())){
+                signInButton.getScene().getWindow().hide();
+                toMainPane();
+            }
         });
 
 
@@ -50,23 +53,10 @@ public class SingInController {
 
     }
 
-    private void toMainPane(){
-        signInButton.getScene().getWindow().hide();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../recourses/mainPane.fxml"));
-        try{
-            loader.load();
-        }catch (IOException ex){
-            ex.printStackTrace();
-        }
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
-    }
 
     private void toRegPane(){
-        regButton.getScene().getWindow().hide();
+        Stage stage1 = (Stage) regButton.getScene().getWindow();
+        stage1.close();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../recourses/registrationPane.fxml"));
         try{
@@ -77,6 +67,7 @@ public class SingInController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        stage.showAndWait();
+        stage.show();
     }
+
 }
