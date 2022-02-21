@@ -31,7 +31,7 @@ public class RegistrationController {
     private URL location;
 
     @FXML
-    private Button regButton;
+    private Button signInButton;
 
     @FXML
     private TextField loginTextArea;
@@ -39,26 +39,27 @@ public class RegistrationController {
     @FXML
     private TextField passwordTextArea;
 
-    @FXML
-    private Button backButton;
+
 
     @FXML
     void initialize() {
-        regButton.setOnMouseEntered(event -> regButton.setStyle("-fx-background-color: #808080;"));
-        regButton.setOnMouseExited(event -> regButton.setStyle("-fx-background-color: #696969;"));
-        regButton.setOnAction(event -> {
+        signInButton.setOnMouseEntered(event -> signInButton.setStyle("-fx-background-color: #808080;"));
+        signInButton.setOnMouseExited(event -> signInButton.setStyle("-fx-background-color: #696969;"));
+        signInButton.setOnAction(event -> {
             if(db.userRegistration(loginTextArea.getText().trim(), passwordTextArea.getText().trim())){
-                RegModalWindow.newWindow();
-                toSignInPane();
+                //RegModalWindow.newWindow();
+                toRegModWindw();
+                toMainPane();
             }
         });
 
 
-        backButton.setOnMouseEntered(event -> backButton.setStyle("-fx-background-color: #808080;"));
-        backButton.setOnMouseExited(event -> backButton.setStyle("-fx-background-color: #696969;"));
-        backButton.setOnAction(event -> toSignInPane());
+        //backButton.setOnMouseEntered(event -> backButton.setStyle("-fx-background-color: #808080;"));
+        //backButton.setOnMouseExited(event -> backButton.setStyle("-fx-background-color: #696969;"));
+        //backButton.setOnAction(event -> toSignInPane());
     }
 
+    /*
     private void toSignInPane() {
         backButton.getScene().getWindow().hide();
 
@@ -74,7 +75,34 @@ public class RegistrationController {
         stage.setScene(new Scene(root));
         stage.showAndWait();
     }
+*/
+    private void toRegModWindw(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../recourses/regModalWindowPane.fxml"));
+        try{
+            loader.load();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+    }
 
-
+    private void toMainPane(){
+        signInButton.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../recourses/mainPane.fxml"));
+        try{
+            loader.load();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+    }
 
 }
