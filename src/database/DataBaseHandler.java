@@ -1,6 +1,10 @@
 package database;
 
+import pojo.Unemployed;
+
+import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataBaseHandler {
@@ -40,6 +44,24 @@ public class DataBaseHandler {
             ex.printStackTrace();
             return false;
         }
+    }
+
+    public List<Unemployed> readResultSet(){
+        String sqlQuery = "SELECT * FROM unemployed";
+        List<Unemployed> list = new ArrayList<>();
+        try(Statement statement = getDbConnection().createStatement()){
+            Unemployed up = null;
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while(rs.next()){
+                up = new Unemployed(Integer.parseInt(rs.getString("Id")),rs.getString("Фамилия"),rs.getString("Имя"),rs.getString("Отчество"),Integer.parseInt(rs.getString("Возраст")),
+                        Integer.parseInt(rs.getString("Пол")),Integer.parseInt(rs.getString("Образование")), Integer.parseInt(rs.getString("Опыт")), rs.getString("Контакты"), Integer.parseInt(rs.getString("Страна")),
+                        Integer.parseInt(rs.getString("Предыдущее место работы")),rs.getString("Паспорт"));
+                list.add(up);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
     }
 
 

@@ -31,7 +31,7 @@ public class MainController {
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../recourses/test.fxml"));
+            loader.setLocation(getClass().getResource("../recourses/addUnemplPane.fxml"));
             try{
                 loader.load();
             }catch (IOException ex){
