@@ -8,10 +8,7 @@ import database.DataBaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Unemployed;
 
@@ -75,6 +72,45 @@ public class AddUnemplController {
     private MenuItem addUnempButton;
 
     @FXML
+    private TextField IdTextArea;
+
+    @FXML
+    private TextField surnameTextArea;
+
+    @FXML
+    private TextField ageTextArea;
+
+    @FXML
+    private TextField genderTextArea;
+
+    @FXML
+    private TextField contactsTextArea;
+
+    @FXML
+    private TextField experienceTextArea;
+
+    @FXML
+    private TextField nameTextArea;
+
+    @FXML
+    private TextField patronymicTextArea;
+
+    @FXML
+    private TextField passportTextArea;
+
+    @FXML
+    private TextField previousEmploymentTextArea;
+
+    @FXML
+    private TextField countryTextArea;
+
+    @FXML
+    private TextField educationTextArea;
+
+    @FXML
+    private Button addButton;
+
+    @FXML
     void initialize() {
         idColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("id"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,String>("surname"));
@@ -89,12 +125,30 @@ public class AddUnemplController {
         previousEmploymentColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("previousEmployment"));
         passportColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,String>("passport"));
 
+
+        showData();
+
+        addButton.setOnMouseEntered(event -> addButton.setStyle("-fx-background-color: #808080;"));
+        addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
+        addButton.setOnAction(event -> {
+            Unemployed unemployed = new Unemployed(Integer.parseInt(IdTextArea.getText()),surnameTextArea.getText(),nameTextArea.getText(),
+                    patronymicTextArea.getText(),Integer.parseInt(ageTextArea.getText()),Integer.parseInt(genderTextArea.getText()),
+                    Integer.parseInt(educationTextArea.getText()),Integer.parseInt(experienceTextArea.getText()),contactsTextArea.getText(),
+                    Integer.parseInt(countryTextArea.getText()),Integer.parseInt(previousEmploymentTextArea.getText()),passportTextArea.getText());
+            db.addUnempl(unemployed);
+            unempList.clear();
+            osList.clear();
+            showData();
+        });
+
+    }
+
+    private void showData(){
         unempList = db.readResultSet();
         for(Unemployed i: unempList){
             osList.add(i);
         }
         unemplTable.setItems(osList);
-
-
     }
 }
+

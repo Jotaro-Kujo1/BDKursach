@@ -64,5 +64,25 @@ public class DataBaseHandler {
         return list;
     }
 
+    public void addUnempl(Unemployed unempl){
+        String sqlQuery = "INSERT INTO unemployed VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.setInt(1,unempl.getId());
+            statement.setString(2, unempl.getSurname());
+            statement.setString(3, unempl.getName());
+            statement.setString(4, unempl.getPatronymic());
+            statement.setInt(5, unempl.getAge());
+            statement.setInt(6, unempl.getGender());
+            statement.setInt(7, unempl.getEducation());
+            statement.setInt(8, unempl.getExperience());
+            statement.setString(9, unempl.getContacts());
+            statement.setInt(10, unempl.getCountry());
+            statement.setInt(11, unempl.getPreviousEmployment());
+            statement.setString(12, unempl.getPassport());
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
 
 }
