@@ -12,7 +12,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MainController {
+public class MainController implements ToPane{
 
     @FXML
     private ResourceBundle resources;
@@ -27,20 +27,59 @@ public class MainController {
     private MenuItem addUnempButton;
 
     @FXML
+    private MenuItem addSpecialityButton;
+
+    @FXML
+    private MenuItem addSkillButton;
+
+    @FXML
+    private MenuItem addVacancyButton;
+
+    @FXML
+    private MenuItem addOfficeButton;
+
+    @FXML
+    private MenuItem addCountryButton;
+
+    @FXML
+    private MenuItem addEducationButton;
+
+    @FXML
+    private MenuItem addCompanyButton;
+
+    @FXML
     void initialize() {
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../recourses/addUnemplPane.fxml"));
-            try{
-                loader.load();
-            }catch (IOException ex){
-                ex.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+            toAddPane("../recourses/addUnemplPane.fxml");
+        });
+        addSpecialityButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addSpecialityPane.fxml");
+        });
+        addSkillButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addSkillPane.fxml");
+        });
+        addVacancyButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addVacancyPane.fxml");
+        });
+        addOfficeButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addOfficePane.fxml");
+        });
+        addCountryButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addCountryPane.fxml");
+        });
+        addEducationButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addEducationPane.fxml");
+        });
+        addCompanyButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addCompanyPane.fxml");
         });
     }
 }

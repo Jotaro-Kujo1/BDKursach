@@ -14,7 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SingInController implements ToPane{
+public class SingInController{
 
     private DataBaseHandler db = new DataBaseHandler();
     @FXML
@@ -41,7 +41,7 @@ public class SingInController implements ToPane{
         signInButton.setOnMouseExited(event -> signInButton.setStyle("-fx-background-color: #696969;"));
         signInButton.setOnAction(event -> {
             if(db.userSignIn(loginTextArea.getText().trim(),passwordTextArea.getText().trim())){
-                signInButton.getScene().getWindow().hide();
+                //signInButton.getScene().getWindow().hide();
                 toMainPane();
             }
         });
@@ -70,4 +70,18 @@ public class SingInController implements ToPane{
         stage.show();
     }
 
+    private void toMainPane(){
+        signInButton.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../recourses/mainPane.fxml"));
+        try{
+            loader.load();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

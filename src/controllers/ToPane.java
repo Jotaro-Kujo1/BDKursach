@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public interface ToPane {
 
-    default void toMainPane(){
+    default void toAddPane(String str){
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../recourses/mainPane.fxml"));
+        loader.setLocation(getClass().getResource(str));
         try{
             loader.load();
         }catch (IOException ex){
@@ -22,6 +22,5 @@ public interface ToPane {
         stage.setScene(new Scene(root));
         stage.show();
     }
-
 
 }

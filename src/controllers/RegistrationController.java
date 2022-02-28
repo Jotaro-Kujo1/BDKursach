@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class RegistrationController implements ToPane{
+public class RegistrationController{
 
 
     private DataBaseHandler db = new DataBaseHandler();
@@ -64,4 +64,17 @@ public class RegistrationController implements ToPane{
         stage.showAndWait();
     }
 
+    private void toMainPane(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../recourses/mainPane.fxml"));
+        try{
+            loader.load();
+        }catch (IOException ex){
+            ex.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

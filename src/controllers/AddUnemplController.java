@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Unemployed;
 
-public class AddUnemplController {
+public class AddUnemplController implements ToPane{
 
     private ObservableList<Unemployed> osList = FXCollections.observableArrayList();
 
@@ -70,6 +70,27 @@ public class AddUnemplController {
 
     @FXML
     private MenuItem addUnempButton;
+
+    @FXML
+    private MenuItem addSpecialityButton;
+
+    @FXML
+    private MenuItem addSkillButton;
+
+    @FXML
+    private MenuItem addVacancyButton;
+
+    @FXML
+    private MenuItem addOfficeButton;
+
+    @FXML
+    private MenuItem addCountryButton;
+
+    @FXML
+    private MenuItem addEducationButton;
+
+    @FXML
+    private MenuItem addCompanyButton;
 
     @FXML
     private TextField IdTextArea;
@@ -139,6 +160,13 @@ public class AddUnemplController {
             unempList.clear();
             osList.clear();
             showData();
+            clearTextBox();
+        });
+
+
+        addSpecialityButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addSpecialityPane.fxml");
         });
 
     }
@@ -149,6 +177,21 @@ public class AddUnemplController {
             osList.add(i);
         }
         unemplTable.setItems(osList);
+    }
+
+    private void clearTextBox(){
+        IdTextArea.clear();
+        surnameTextArea.clear();
+        ageTextArea.clear();
+        genderTextArea.clear();
+        contactsTextArea.clear();
+        experienceTextArea.clear();
+        nameTextArea.clear();
+        patronymicTextArea.clear();
+        passportTextArea.clear();
+        previousEmploymentTextArea.clear();
+        countryTextArea.clear();
+        educationTextArea.clear();
     }
 }
 

@@ -10,7 +10,13 @@
       <MenuButton fx:id="addMainButton" layoutY="-2.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="134.0" style="-fx-background-color: #696969;" text="Добавить" textAlignment="CENTER" textFill="WHITE">
         <items>
           <MenuItem fx:id="addUnempButton" mnemonicParsing="false" text="Добавить безработного" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem fx:id="addSpecialityButton" mnemonicParsing="false" text="Добавить специальность" />
+            <MenuItem fx:id="addSkillButton" mnemonicParsing="false" text="Добавить навык" />
+            <MenuItem fx:id="addVacancyButton" mnemonicParsing="false" text="Добавить вакансию" />
+            <MenuItem fx:id="addOfficeButton" mnemonicParsing="false" text="Добавить офис" />
+            <MenuItem fx:id="addCountryButton" mnemonicParsing="false" text="Добавить страну" />
+            <MenuItem fx:id="addEducationButton" mnemonicParsing="false" text="Добавить образование" />
+            <MenuItem fx:id="addCompanyButton" mnemonicParsing="false" text="Добавить предприятие" />
         </items>
       </MenuButton>
    </children>
