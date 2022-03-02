@@ -169,6 +169,31 @@ public class AddUnemplController implements ToPane{
             toAddPane("../recourses/addSpecialityPane.fxml");
         });
 
+        addSkillButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addSkillPane.fxml");
+        });
+        addVacancyButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addVacancyPane.fxml");
+        });
+        addOfficeButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addOfficePane.fxml");
+        });
+        addCountryButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addCountryPane.fxml");
+        });
+        addEducationButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addEducationPane.fxml");
+        });
+        addCompanyButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addCompanyPane.fxml");
+        });
+
     }
 
     private void showData(){

@@ -1,20 +1,14 @@
 package controllers;
 
-import java.math.BigInteger;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import pojo.Company;
+
+
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import pojo.Speciality;
-import pojo.Unemployed;
 
-public class AddSpecialityController implements ToPane{
-
+public class AddCompanyController implements ToPane{
     @FXML
     private ResourceBundle resources;
 
@@ -22,19 +16,14 @@ public class AddSpecialityController implements ToPane{
     private URL location;
 
     @FXML
-    private TableView<Speciality> specialityTable;
+    private TableView<Company> specialityTable;
 
     @FXML
-    private TableColumn<Speciality, Integer> idColumn;
+    private TableColumn<Company, Integer> idColumn;
 
     @FXML
-    private TableColumn<Speciality, Integer> specialityColumn;
+    private TableColumn<Company, String> companyColumn;
 
-    @FXML
-    private TableColumn<Speciality, Integer> salaryColumn;
-
-    @FXML
-    private TableColumn<Speciality, Integer> idUnempl;
 
     @FXML
     private MenuButton addMainButton;
@@ -67,10 +56,11 @@ public class AddSpecialityController implements ToPane{
     private Button addButton;
 
     @FXML
-    private TextField IdTextAreaButton;
+    private TextField IdTextArea;
 
     @FXML
     private TextField companyTextArea;
+
 
 
     @FXML
@@ -78,6 +68,10 @@ public class AddSpecialityController implements ToPane{
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addUnemplPane.fxml");
+        });
+        addSpecialityButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addSpecialityPane.fxml");
         });
         addSkillButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
@@ -99,10 +93,6 @@ public class AddSpecialityController implements ToPane{
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addEducationPane.fxml");
         });
-        addCompanyButton.setOnAction(event -> {
-            addMainButton.getScene().getWindow().hide();
-            toAddPane("../recourses/addCompanyPane.fxml");
-        });
+
     }
 }
-
