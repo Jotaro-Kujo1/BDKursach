@@ -197,7 +197,7 @@ public class AddUnemplController implements ToPane{
     }
 
     private void showData(){
-        unempList = db.readResultSet();
+        unempList = db.readUnemplResultSet();
         for(Unemployed i: unempList){
             osList.add(i);
         }

@@ -1,5 +1,7 @@
 package database;
 
+import pojo.Company;
+import pojo.Country;
 import pojo.Unemployed;
 
 import java.io.IOException;
@@ -46,7 +48,7 @@ public class DataBaseHandler {
         }
     }
 
-    public List<Unemployed> readResultSet(){
+    public List<Unemployed> readUnemplResultSet(){
         String sqlQuery = "SELECT * FROM unemployed";
         List<Unemployed> list = new ArrayList<>();
         try(Statement statement = getDbConnection().createStatement()){
@@ -79,6 +81,60 @@ public class DataBaseHandler {
             statement.setInt(10, unempl.getCountry());
             statement.setInt(11, unempl.getPreviousEmployment());
             statement.setString(12, unempl.getPassport());
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public List<Company> readCompanyResultSet(){
+        String sqlQuery = "SELECT * FROM company";
+        List<Company> list = new ArrayList<>();
+        try(Statement statement = getDbConnection().createStatement()){
+            Company company = null;
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while(rs.next()){
+                company = new Company(Integer.parseInt(rs.getString("Id")), rs.getString("Компания"));
+                list.add(company);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    public void addCompany(Company company){
+        String sqlQuery = "INSERT INTO company VALUES(?,?)";
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.setInt(1,company.getId());
+            statement.setString(2, company.getCompany());
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public List<Country> readCountryResultSet(){
+        String sqlQuery = "SELECT * FROM country";
+        List<Country> list = new ArrayList<>();
+        try(Statement statement = getDbConnection().createStatement()){
+            Country country = null;
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while(rs.next()){
+                country = new Country(Integer.parseInt(rs.getString("Id")), rs.getString("Страна"));
+                list.add(country);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    public void addCountry(Country country){
+        String sqlQuery = "INSERT INTO country VALUES(?,?)";
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.setInt(1,country.getId());
+            statement.setString(2, country.getCountry());
             statement.execute();
         }catch (SQLException | ClassNotFoundException ex){
             ex.printStackTrace();
