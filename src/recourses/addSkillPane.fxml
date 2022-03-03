@@ -5,7 +5,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1051.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddSkillController">
     <children>
-        <TableView fx:id="countryTable" layoutX="440.0" layoutY="87.0" prefHeight="413.0" prefWidth="149.0">
+        <TableView fx:id="skillTable" layoutX="440.0" layoutY="87.0" prefHeight="413.0" prefWidth="149.0">
             <columns>
                 <TableColumn fx:id="idColumn" prefWidth="33.0" text="Id" />
                 <TableColumn fx:id="skillColumn" prefWidth="117.0" text="Умение" />

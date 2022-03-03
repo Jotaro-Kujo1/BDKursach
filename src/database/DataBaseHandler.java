@@ -1,8 +1,6 @@
 package database;
 
-import pojo.Company;
-import pojo.Country;
-import pojo.Unemployed;
+import pojo.*;
 
 import java.io.IOException;
 import java.sql.*;
@@ -135,6 +133,87 @@ public class DataBaseHandler {
         try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
             statement.setInt(1,country.getId());
             statement.setString(2, country.getCountry());
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public List<Education> readEducationResultSet(){
+        String sqlQuery = "SELECT * FROM education";
+        List<Education> list = new ArrayList<>();
+        try(Statement statement = getDbConnection().createStatement()){
+            Education education = null;
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while(rs.next()){
+                education = new Education(Integer.parseInt(rs.getString("Id")), rs.getString("Образование"));
+                list.add(education);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    public void addEducation(Education education){
+        String sqlQuery = "INSERT INTO education VALUES(?,?)";
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.setInt(1,education.getId());
+            statement.setString(2, education.getEducation());
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public List<Office> readOfficeResultSet(){
+        String sqlQuery = "SELECT * FROM offices";
+        List<Office> list = new ArrayList<>();
+        try(Statement statement = getDbConnection().createStatement()){
+            Office office = null;
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while(rs.next()){
+                office = new Office(Integer.parseInt(rs.getString("Id")), rs.getString("Город"));
+                list.add(office);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    public void addOffice(Office office){
+        String sqlQuery = "INSERT INTO offices VALUES(?,?)";
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.setInt(1,office.getId());
+            statement.setString(2, office.getCity());
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public List<Skill> readSkillResultSet(){
+        String sqlQuery = "SELECT * FROM skills";
+        List<Skill> list = new ArrayList<>();
+        try(Statement statement = getDbConnection().createStatement()){
+            Skill skill = null;
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while(rs.next()){
+                skill = new Skill(Integer.parseInt(rs.getString("Id")), rs.getString("Умение"));
+                list.add(skill);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    public void addSkill(Skill skill){
+        String sqlQuery = "INSERT INTO skills VALUES(?,?)";
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.setInt(1,skill.getId());
+            statement.setString(2, skill.getSkill());
             statement.execute();
         }catch (SQLException | ClassNotFoundException ex){
             ex.printStackTrace();

@@ -1,14 +1,27 @@
 package controllers;
 
+import database.DataBaseHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import pojo.Country;
 import pojo.Education;
 
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddEducationController implements ToPane{
+
+    private ObservableList<Education> osList = FXCollections.observableArrayList();
+
+    private List<Education> educationList;
+
+    private DataBaseHandler db = new DataBaseHandler();
+
     @FXML
     private ResourceBundle resources;
 
@@ -16,7 +29,7 @@ public class AddEducationController implements ToPane{
     private URL location;
 
     @FXML
-    private TableView<Education> countryTable;
+    private TableView<Education> educationTable;
 
     @FXML
     private TableColumn<Education, Integer> idColumn;
@@ -66,6 +79,22 @@ public class AddEducationController implements ToPane{
 
     @FXML
     void initialize() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Education,Integer>("id"));
+        educationColumn.setCellValueFactory(new PropertyValueFactory<Education,String>("education"));
+
+        showData();
+
+        addButton.setOnMouseEntered(event -> addButton.setStyle("-fx-background-color: #808080;"));
+        addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
+        addButton.setOnAction( event -> {
+            Education education = new Education(Integer.parseInt(IdTextArea.getText()),educationTextArea.getText());
+            db.addEducation(education);
+            educationList.clear();
+            osList.clear();
+            showData();
+            clearTextBox();
+        });
+
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addUnemplPane.fxml");
@@ -95,5 +124,18 @@ public class AddEducationController implements ToPane{
             toAddPane("../recourses/addCompanyPane.fxml");
         });
 
+    }
+
+    private void showData(){
+        educationList = db.readEducationResultSet();
+        for(Education i: educationList){
+            osList.add(i);
+        }
+        educationTable.setItems(osList);
+    }
+
+    private void clearTextBox(){
+        IdTextArea.clear();
+        educationTextArea.clear();
     }
 }
