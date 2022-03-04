@@ -1,24 +1,41 @@
 package controllers;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import database.DataBaseHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import pojo.Company;
 
-public class MainController implements ToPane{
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class DeleteCompanyController implements ToPane {
+
+    private ObservableList<Company> osList = FXCollections.observableArrayList();
+
+    private List<Company> companyList;
+
+    private DataBaseHandler db = new DataBaseHandler();
 
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+
+    @FXML
+    private TableView<Company> companyTable;
+
+    @FXML
+    private TableColumn<Company, Integer> idColumn;
+
+    @FXML
+    private TableColumn<Company, String> companyColumn;
+
 
     @FXML
     private MenuButton addMainButton;
@@ -75,7 +92,35 @@ public class MainController implements ToPane{
     private MenuItem deleteCompanyButton;
 
     @FXML
+    private Button deleteButton;
+
+
+    @FXML
     void initialize() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Company,Integer>("id"));
+        companyColumn.setCellValueFactory(new PropertyValueFactory<Company,String>("company"));
+
+        showData();
+
+        deleteButton.setOnMouseEntered(event -> deleteButton.setStyle("-fx-background-color: #808080;"));
+        deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
+        deleteButton.setOnAction(event -> {
+            Company company = companyTable.getSelectionModel().getSelectedItem();
+            db.deleteCompany(company.getId());
+            companyList.clear();
+            osList.clear();
+            try{
+                companyList = db.readCompanyResultSet();
+                for(Company i : companyList){
+                    osList.add(i);
+                }
+                companyTable.setItems(osList);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        });
+
+
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addUnemplPane.fxml");
@@ -104,13 +149,14 @@ public class MainController implements ToPane{
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addEducationPane.fxml");
         });
-        addCompanyButton.setOnAction(event -> {
-            addMainButton.getScene().getWindow().hide();
-            toAddPane("../recourses/addCompanyPane.fxml");
-        });
-        deleteCompanyButton.setOnAction(event -> {
-            deleteMainButton.getScene().getWindow().hide();
-            toAddPane("../recourses/deleteCompanyPane.fxml");
-        });
+
+    }
+
+    private void showData(){
+        companyList = db.readCompanyResultSet();
+        for(Company i: companyList){
+            osList.add(i);
+        }
+        companyTable.setItems(osList);
     }
 }

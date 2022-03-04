@@ -92,6 +92,8 @@ public class AddUnemplController implements ToPane{
     @FXML
     private MenuItem addCompanyButton;
 
+
+
     @FXML
     private TextField IdTextArea;
 
@@ -193,6 +195,7 @@ public class AddUnemplController implements ToPane{
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addCompanyPane.fxml");
         });
+
 
     }
 

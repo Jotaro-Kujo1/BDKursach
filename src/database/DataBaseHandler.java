@@ -282,4 +282,13 @@ public class DataBaseHandler {
             ex.printStackTrace();
         }
     }
+
+    public void deleteCompany(int id){
+        String sqlQuery = "DELETE FROM company WHERE Id=" + id;
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
 }
