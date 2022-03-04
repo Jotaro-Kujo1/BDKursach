@@ -248,4 +248,38 @@ public class DataBaseHandler {
             ex.printStackTrace();
         }
     }
+
+    public List<Vacancy> readVacancyResultSet(){
+        String sqlQuery = "SELECT * FROM vacancy";
+        List<Vacancy> list = new ArrayList<>();
+        try(Statement statement = getDbConnection().createStatement()){
+            Vacancy vacancy = null;
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while(rs.next()){
+                vacancy = new Vacancy(Integer.parseInt(rs.getString("Id")), Integer.parseInt(rs.getString("Вакансия")),Integer.parseInt(rs.getString("Опыт")),Integer.parseInt(rs.getString("Зарплата")),
+                        Integer.parseInt(rs.getString("Количество рабочих мест")),Integer.parseInt(rs.getString("Льготы")),Integer.parseInt(rs.getString("Офисы")),Integer.parseInt(rs.getString("Предприятие")));
+                list.add(vacancy);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    public void addVacancy(Vacancy vacancy){
+        String sqlQuery = "INSERT INTO vacancy VALUES(?,?,?,?,?,?,?,?)";
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.setInt(1,vacancy.getId());
+            statement.setInt(2, vacancy.getSkill());
+            statement.setInt(3,vacancy.getExperience());
+            statement.setInt(4, vacancy.getSalary());
+            statement.setInt(5,vacancy.getNumberOfWorkplaces());
+            statement.setInt(6, vacancy.getPrivileges());
+            statement.setInt(7,vacancy.getOffice());
+            statement.setInt(8, vacancy.getCompany());
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
 }
