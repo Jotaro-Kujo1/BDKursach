@@ -220,4 +220,32 @@ public class DataBaseHandler {
         }
     }
 
+    public List<Speciality> readSpecialityResultSet(){
+        String sqlQuery = "SELECT * FROM speciality";
+        List<Speciality> list = new ArrayList<>();
+        try(Statement statement = getDbConnection().createStatement()){
+            Speciality speciality = null;
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while(rs.next()){
+                speciality = new Speciality(Integer.parseInt(rs.getString("Id")), Integer.parseInt(rs.getString("Специальность")),Integer.parseInt(rs.getString("Зарплата")),Integer.parseInt(rs.getString("Человек")));
+                list.add(speciality);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    public void addSpeciality(Speciality speciality){
+        String sqlQuery = "INSERT INTO speciality VALUES(?,?,?,?)";
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.setInt(1,speciality.getId());
+            statement.setInt(2, speciality.getSpeciality());
+            statement.setInt(3,speciality.getSalary());
+            statement.setInt(4, speciality.getPerson());
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
 }
