@@ -24,6 +24,18 @@
                 <MenuItem fx:id="addCompanyButton" mnemonicParsing="false" text="Добавить предприятие" />
             </items>
         </MenuButton>
+        <MenuButton fx:id="deleteMainButton" layoutX="134.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="134.0" style="-fx-background-color: #696969;" text="Удалить" textAlignment="CENTER" textFill="WHITE">
+            <items>
+                <MenuItem fx:id="deleteUnempButton" mnemonicParsing="false" text="Удалить безработного" />
+                <MenuItem fx:id="deleteSpecialityButton" mnemonicParsing="false" text="Удалить специальность" />
+                <MenuItem fx:id="deleteSkillButton" mnemonicParsing="false" text="Удалить навык" />
+                <MenuItem fx:id="deleteVacancyButton" mnemonicParsing="false" text="Удалить вакансию" />
+                <MenuItem fx:id="deleteOfficeButton" mnemonicParsing="false" text="Удалить офис" />
+                <MenuItem fx:id="deleteCountryButton" mnemonicParsing="false" text="Удалить страну" />
+                <MenuItem fx:id="deleteEducationButton" mnemonicParsing="false" text="Удалить образование" />
+                <MenuItem fx:id="deleteCompanyButton" mnemonicParsing="false" text="Удалить предприятие" />
+            </items>
+        </MenuButton>
         <Button fx:id="addButton" layoutX="447.0" layoutY="621.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="134.0" style="-fx-background-color: #696969;" text="Добавить" textFill="WHITE" />
         <TextField fx:id="IdTextArea" layoutX="440.0" layoutY="521.0" promptText="Id" />
         <TextField fx:id="educationTextArea" layoutX="440.0" layoutY="557.0" promptText="Образование" />

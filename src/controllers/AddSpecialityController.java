@@ -76,6 +76,33 @@ public class AddSpecialityController implements ToPane{
     private MenuItem addCompanyButton;
 
     @FXML
+    private MenuButton deleteMainButton;
+
+    @FXML
+    private MenuItem deleteUnempButton;
+
+    @FXML
+    private MenuItem deleteSpecialityButton;
+
+    @FXML
+    private MenuItem deleteSkillButton;
+
+    @FXML
+    private MenuItem deleteVacancyButton;
+
+    @FXML
+    private MenuItem deleteOfficeButton;
+
+    @FXML
+    private MenuItem deleteCountryButton;
+
+    @FXML
+    private MenuItem deleteEducationButton;
+
+    @FXML
+    private MenuItem deleteCompanyButton;
+
+    @FXML
     private Button addButton;
 
     @FXML
@@ -139,6 +166,35 @@ public class AddSpecialityController implements ToPane{
         addCompanyButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addCompanyPane.fxml");
+        });
+
+        deleteUnempButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteUnemplPane.fxml");
+        });
+        deleteSpecialityButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteSpecialityPane.fxml");
+        });
+        deleteSkillButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteSkillPane.fxml");
+        });
+        deleteVacancyButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteVacancyPane.fxml");
+        });
+        deleteOfficeButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteOfficePane.fxml");
+        });
+        deleteCountryButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteCountryPane.fxml");
+        });
+        deleteEducationButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteEducationPane.fxml");
         });
     }
 

@@ -1,24 +1,42 @@
 package controllers;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import database.DataBaseHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import pojo.Company;
+import pojo.Country;
 
-public class MainController implements ToPane{
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class DeleteCountryController implements ToPane {
+
+    private ObservableList<Country> osList = FXCollections.observableArrayList();
+
+    private List<Country> countryList;
+
+    private DataBaseHandler db = new DataBaseHandler();
 
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+
+    @FXML
+    private TableView<Country> countryTable;
+
+    @FXML
+    private TableColumn<Country, Integer> idColumn;
+
+    @FXML
+    private TableColumn<Country, String> countryColumn;
+
 
     @FXML
     private MenuButton addMainButton;
@@ -75,7 +93,35 @@ public class MainController implements ToPane{
     private MenuItem deleteCompanyButton;
 
     @FXML
+    private Button deleteButton;
+
+
+    @FXML
     void initialize() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Country,Integer>("id"));
+        countryColumn.setCellValueFactory(new PropertyValueFactory<Country,String>("country"));
+
+        showData();
+
+        deleteButton.setOnMouseEntered(event -> deleteButton.setStyle("-fx-background-color: #808080;"));
+        deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
+        deleteButton.setOnAction(event -> {
+            Country country = countryTable.getSelectionModel().getSelectedItem();
+            db.deleteCompany(country.getId());
+            countryList.clear();
+            osList.clear();
+            try{
+                countryList = db.readCountryResultSet();
+                for(Country i : countryList){
+                    osList.add(i);
+                }
+                countryTable.setItems(osList);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        });
+
+
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addUnemplPane.fxml");
@@ -103,10 +149,6 @@ public class MainController implements ToPane{
         addEducationButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addEducationPane.fxml");
-        });
-        addCompanyButton.setOnAction(event -> {
-            addMainButton.getScene().getWindow().hide();
-            toAddPane("../recourses/addCompanyPane.fxml");
         });
 
         deleteUnempButton.setOnAction(event -> {
@@ -137,9 +179,14 @@ public class MainController implements ToPane{
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteEducationPane.fxml");
         });
-        deleteCompanyButton.setOnAction(event -> {
-            deleteMainButton.getScene().getWindow().hide();
-            toAddPane("../recourses/deleteCompanyPane.fxml");
-        });
+
+    }
+
+    private void showData(){
+        countryList = db.readCountryResultSet();
+        for(Country i: countryList){
+            osList.add(i);
+        }
+        countryTable.setItems(osList);
     }
 }
