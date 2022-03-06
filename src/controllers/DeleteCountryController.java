@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import pojo.Company;
 import pojo.Country;
 
 import java.net.URL;
@@ -107,7 +106,7 @@ public class DeleteCountryController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Country country = countryTable.getSelectionModel().getSelectedItem();
-            db.deleteCompany(country.getId());
+            db.deleteCountry(country.getId());
             countryList.clear();
             osList.clear();
             try{
