@@ -309,4 +309,22 @@ public class DataBaseHandler {
             ex.printStackTrace();
         }
     }
+
+    public void deleteOffice(int id){
+        String sqlQuery = "DELETE FROM offices WHERE Id=" + id;
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public void deleteSkill(int id){
+        String sqlQuery = "DELETE FROM skills WHERE Id=" + id;
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
 }

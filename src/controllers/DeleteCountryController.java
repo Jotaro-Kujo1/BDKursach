@@ -170,15 +170,15 @@ public class DeleteCountryController implements ToPane {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteOfficePane.fxml");
         });
-        deleteCountryButton.setOnAction(event -> {
-            deleteMainButton.getScene().getWindow().hide();
-            toAddPane("../recourses/deleteCountryPane.fxml");
-        });
+
         deleteEducationButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteEducationPane.fxml");
         });
-
+        deleteCompanyButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteCompanyPane.fxml");
+        });
     }
 
     private void showData(){
