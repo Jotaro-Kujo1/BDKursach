@@ -327,4 +327,13 @@ public class DataBaseHandler {
             ex.printStackTrace();
         }
     }
+
+    public void deleteSpeciality(int id){
+        String sqlQuery = "DELETE FROM speciality WHERE Id=" + id;
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
 }
