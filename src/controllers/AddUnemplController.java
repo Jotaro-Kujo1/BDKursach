@@ -191,11 +191,12 @@ public class AddUnemplController implements ToPane{
         });
 
 
+
+
         addSpecialityButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addSpecialityPane.fxml");
         });
-
         addSkillButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addSkillPane.fxml");
@@ -248,6 +249,10 @@ public class AddUnemplController implements ToPane{
         deleteEducationButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteEducationPane.fxml");
+        });
+        deleteCompanyButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteCompanyPane.fxml");
         });
 
     }

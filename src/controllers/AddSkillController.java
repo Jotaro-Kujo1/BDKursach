@@ -131,6 +131,7 @@ public class AddSkillController implements ToPane{
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addSpecialityPane.fxml");
         });
+
         addVacancyButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addVacancyPane.fxml");
@@ -179,6 +180,10 @@ public class AddSkillController implements ToPane{
         deleteEducationButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteEducationPane.fxml");
+        });
+        deleteCompanyButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteCompanyPane.fxml");
         });
     }
 

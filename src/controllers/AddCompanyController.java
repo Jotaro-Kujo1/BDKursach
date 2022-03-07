@@ -150,6 +150,7 @@ public class AddCompanyController implements ToPane{
             toAddPane("../recourses/addEducationPane.fxml");
         });
 
+
         deleteUnempButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteUnemplPane.fxml");
@@ -177,6 +178,10 @@ public class AddCompanyController implements ToPane{
         deleteEducationButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteEducationPane.fxml");
+        });
+        deleteCompanyButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteCompanyPane.fxml");
         });
 
     }

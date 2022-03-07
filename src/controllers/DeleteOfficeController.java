@@ -149,7 +149,10 @@ public class DeleteOfficeController implements ToPane {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addEducationPane.fxml");
         });
-
+        addCompanyButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addCompanyPane.fxml");
+        });
 
         deleteUnempButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
@@ -167,6 +170,7 @@ public class DeleteOfficeController implements ToPane {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteVacancyPane.fxml");
         });
+
         deleteCountryButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteCountryPane.fxml");

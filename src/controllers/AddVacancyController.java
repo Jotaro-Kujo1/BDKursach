@@ -176,6 +176,7 @@ public class AddVacancyController implements ToPane{
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addSkillPane.fxml");
         });
+
         addOfficeButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addOfficePane.fxml");
@@ -220,6 +221,10 @@ public class AddVacancyController implements ToPane{
         deleteEducationButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteEducationPane.fxml");
+        });
+        deleteCompanyButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteCompanyPane.fxml");
         });
 
     }

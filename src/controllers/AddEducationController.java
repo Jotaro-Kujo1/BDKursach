@@ -146,6 +146,7 @@ public class AddEducationController implements ToPane{
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addCountryPane.fxml");
         });
+
         addCompanyButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addCompanyPane.fxml");
@@ -178,6 +179,10 @@ public class AddEducationController implements ToPane{
         deleteEducationButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteEducationPane.fxml");
+        });
+        deleteCompanyButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteCompanyPane.fxml");
         });
 
     }

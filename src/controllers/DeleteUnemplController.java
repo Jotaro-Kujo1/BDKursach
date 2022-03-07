@@ -188,7 +188,10 @@ public class DeleteUnemplController implements ToPane {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addEducationPane.fxml");
         });
-
+        addCompanyButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addCompanyPane.fxml");
+        });
 
 
         deleteSpecialityButton.setOnAction(event -> {
