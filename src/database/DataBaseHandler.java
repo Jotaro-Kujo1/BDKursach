@@ -336,4 +336,13 @@ public class DataBaseHandler {
             ex.printStackTrace();
         }
     }
+
+    public void deleteUnempl(int id){
+        String sqlQuery = "DELETE FROM unemployed WHERE Id=" + id;
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
 }
