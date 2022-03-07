@@ -7,18 +7,14 @@
     <children>
         <TableView fx:id="unemplTable" layoutX="344.0" layoutY="90.0" prefHeight="413.0" prefWidth="364.0">
             <columns>
-                <TableColumn fx:id="idColumn" prefWidth="75.0" text="Id" />
-                <TableColumn fx:id="surnameColumn" prefWidth="75.0" text="Фамилия" />
-                <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Имя" />
-                <TableColumn fx:id="patronymicColumn" prefWidth="75.0" text="Отчество" />
-                <TableColumn fx:id="ageColumn" prefWidth="57.0" text="Возраст" />
-                <TableColumn fx:id="gendrColumn" prefWidth="41.0" text="Пол" />
-                <TableColumn fx:id="educationColumn" prefWidth="108.0" text="Образование" />
-                <TableColumn fx:id="expColumn" prefWidth="42.0" text="Опыт" />
-                <TableColumn fx:id="contactsColumn" prefWidth="93.0" text="Контакты" />
-                <TableColumn fx:id="countryColumn" prefWidth="109.0" text="Страна" />
-                <TableColumn fx:id="previousEmploymentColumn" prefWidth="75.0" text="Прерыдущее место работы" />
-                <TableColumn fx:id="passportColumn" prefWidth="75.0" text="Паспорт" />
+                <TableColumn fx:id="idColumn" prefWidth="33.0" text="Id" />
+                <TableColumn fx:id="skillColumn" prefWidth="117.0" text="Навык" />
+                <TableColumn fx:id="experienceColumn" prefWidth="117.0" text="Опыт" />
+                <TableColumn fx:id="salaryColumn" prefWidth="117.0" text="Зарплата" />
+                <TableColumn fx:id="numberOfWorkplacesColumn" prefWidth="117.0" text="Количество рабочих мест" />
+                <TableColumn fx:id="privilegesColumn" prefWidth="117.0" text="Льготы" />
+                <TableColumn fx:id="officeColumn" prefWidth="117.0" text="Офисы" />
+                <TableColumn fx:id="companyColumn" prefWidth="117.0" text="Предприятие" />
 
             </columns>
         </TableView>

@@ -345,4 +345,13 @@ public class DataBaseHandler {
             ex.printStackTrace();
         }
     }
+
+    public void deleteVacancy(int id){
+        String sqlQuery = "DELETE FROM vacancy WHERE Id=" + id;
+        try(PreparedStatement statement = getDbConnection().prepareStatement(sqlQuery)){
+            statement.execute();
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+    }
 }
