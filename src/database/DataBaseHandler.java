@@ -354,4 +354,19 @@ public class DataBaseHandler {
             ex.printStackTrace();
         }
     }
+
+    public int genderTransformation(String gender){
+        String sqlQuery = "SELECT Id FROM gender WHERE Пол='" + gender + "'";
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                return Integer.parseInt(rs.getString("Id"));
+            }
+            return 0;
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+            return 0;
+        }
+    }
+
 }
