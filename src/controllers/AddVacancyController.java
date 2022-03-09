@@ -155,8 +155,8 @@ public class AddVacancyController implements ToPane{
         addButton.setOnMouseEntered(event -> addButton.setStyle("-fx-background-color: #808080;"));
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
-            Vacancy vacancy = new Vacancy(Integer.parseInt(IdTextArea.getText()),Integer.parseInt(skillTextArea.getText()),Integer.parseInt(experienceTextArea.getText()),Integer.parseInt(salaryTextArea.getText()),
-                    Integer.parseInt(numberOfWorkplacesTextArea.getText()),Integer.parseInt(privilegesTextArea.getText()),Integer.parseInt(officeTextArea.getText()),Integer.parseInt(companyTextArea.getText()));
+            Vacancy vacancy = new Vacancy(Integer.parseInt(IdTextArea.getText()),db.specialityTransformation(skillTextArea.getText()),Integer.parseInt(experienceTextArea.getText()),Integer.parseInt(salaryTextArea.getText()),
+                    Integer.parseInt(numberOfWorkplacesTextArea.getText()),db.privilegesTransformation(privilegesTextArea.getText()),db.cityTransformation(officeTextArea.getText()),db.previousPlaceTransformation(companyTextArea.getText()));
             db.addVacancy(vacancy);
             vacancyList.clear();
             osList.clear();

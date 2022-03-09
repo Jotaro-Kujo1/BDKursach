@@ -425,4 +425,32 @@ public class DataBaseHandler {
         }
     }
 
+    public int privilegesTransformation(String priv){
+        String sqlQuery = "SELECT Id FROM privileges WHERE Льготы='" + priv + "'";
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                return Integer.parseInt(rs.getString("Id"));
+            }
+            return 0;
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int cityTransformation(String city){
+        String sqlQuery = "SELECT Id FROM offices WHERE Город='" + city + "'";
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                return Integer.parseInt(rs.getString("Id"));
+            }
+            return 0;
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+            return 0;
+        }
+    }
+
 }
