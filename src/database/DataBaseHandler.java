@@ -411,4 +411,18 @@ public class DataBaseHandler {
         }
     }
 
+    public int specialityTransformation(String skill){
+        String sqlQuery = "SELECT Id FROM skills WHERE Умение='" + skill + "'";
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                return Integer.parseInt(rs.getString("Id"));
+            }
+            return 0;
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+            return 0;
+        }
+    }
+
 }

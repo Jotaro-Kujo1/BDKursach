@@ -131,7 +131,7 @@ public class AddSpecialityController implements ToPane{
         addButton.setOnMouseEntered(event -> addButton.setStyle("-fx-background-color: #808080;"));
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
-            Speciality speciality = new Speciality(Integer.parseInt(IdTextArea.getText()),Integer.parseInt(specialityTextArea.getText()),Integer.parseInt(salaryTextArea.getText()),Integer.parseInt(personTextArea.getText()));
+            Speciality speciality = new Speciality(Integer.parseInt(IdTextArea.getText()),db.specialityTransformation(specialityTextArea.getText()),Integer.parseInt(salaryTextArea.getText()),Integer.parseInt(personTextArea.getText()));
             db.addSpeciality(speciality);
             specialityList.clear();
             osList.clear();
