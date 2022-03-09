@@ -182,8 +182,8 @@ public class AddUnemplController implements ToPane{
 
             Unemployed unemployed = new Unemployed(Integer.parseInt(IdTextArea.getText()),surnameTextArea.getText(),nameTextArea.getText(),
                     patronymicTextArea.getText(),Integer.parseInt(ageTextArea.getText()),db.genderTransformation(genderTextArea.getText()),
-                    Integer.parseInt(educationTextArea.getText()),Integer.parseInt(experienceTextArea.getText()),contactsTextArea.getText(),
-                    Integer.parseInt(countryTextArea.getText()),Integer.parseInt(previousEmploymentTextArea.getText()),passportTextArea.getText());
+                    db.educationTransformation(educationTextArea.getText()),Integer.parseInt(experienceTextArea.getText()),contactsTextArea.getText(),
+                    db.countryTransformation(countryTextArea.getText()),db.previousPlaceTransformation(previousEmploymentTextArea.getText()),passportTextArea.getText());
             db.addUnempl(unemployed);
             unempList.clear();
             osList.clear();
