@@ -75,6 +75,34 @@ public class MainController implements ToPane{
     private MenuItem deleteCompanyButton;
 
     @FXML
+    private MenuButton getMainButton;
+
+    @FXML
+    private MenuItem getUnempButton;
+
+    @FXML
+    private MenuItem getSpecialityButton;
+
+    @FXML
+    private MenuItem getSkillButton;
+
+    @FXML
+    private MenuItem getVacancyButton;
+
+    @FXML
+    private MenuItem getOfficeButton;
+
+    @FXML
+    private MenuItem getCountryButton;
+
+    @FXML
+    private MenuItem getEducationButton;
+
+    @FXML
+    private MenuItem getCompanyButton;
+
+
+    @FXML
     void initialize() {
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
@@ -140,6 +168,39 @@ public class MainController implements ToPane{
         deleteCompanyButton.setOnAction(event -> {
             deleteMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/deleteCompanyPane.fxml");
+        });
+
+        getUnempButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getUnemplPane.fxml");
+        });
+        getSpecialityButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getSpecialityPane.fxml");
+        });
+        getSkillButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getSkillPane.fxml");
+        });
+        getVacancyButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getVacancyPane.fxml");
+        });
+        getOfficeButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getOfficePane.fxml");
+        });
+        getCountryButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getCountryPane.fxml");
+        });
+        getEducationButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getEducationPane.fxml");
+        });
+        getCompanyButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getCompanyPane.fxml");
         });
     }
 }
