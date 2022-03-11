@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Country;
 
-public class GetCountryController implements ToPane{
+public class GetCountryController implements ToPane, ToGetError{
 
     private ObservableList<Country> osList = FXCollections.observableArrayList();
 
@@ -134,8 +134,10 @@ public class GetCountryController implements ToPane{
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
             Country country = db.getCountryForId(Integer.parseInt(IdTextArea.getText()));
-            osList.add(country);
-            countryTable.setItems(osList);
+            if(country!=null) {
+                osList.add(country);
+                countryTable.setItems(osList);
+            }else toGerErrorModWindw();
             IdTextArea.clear();
         });
 

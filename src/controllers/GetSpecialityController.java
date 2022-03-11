@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Speciality;
 
-public class GetSpecialityController implements ToPane{
+public class GetSpecialityController implements ToPane, ToGetError{
 
     private ObservableList<Speciality> osList = FXCollections.observableArrayList();
 
@@ -141,8 +141,10 @@ public class GetSpecialityController implements ToPane{
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction( event -> {
             Speciality speciality = db.getSpecialityForId(Integer.parseInt(IdTextArea.getText()));
-            osList.add(speciality);
-            specialityTable.setItems(osList);
+            if(speciality!=null) {
+                osList.add(speciality);
+                specialityTable.setItems(osList);
+            }else toGerErrorModWindw();
             IdTextArea.clear();
         });
 

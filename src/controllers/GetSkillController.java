@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Skill;
 
-public class GetSkillController implements ToPane{
+public class GetSkillController implements ToPane, ToGetError{
 
     private ObservableList<Skill> osList = FXCollections.observableArrayList();
 
@@ -131,8 +131,10 @@ public class GetSkillController implements ToPane{
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
             Skill skill = db.getSkillForId(Integer.parseInt(IdTextArea.getText()));
-            osList.add(skill);
-            skillTable.setItems(osList);
+            if(skill!=null) {
+                osList.add(skill);
+                skillTable.setItems(osList);
+            }else toGerErrorModWindw();
             IdTextArea.clear();
         });
 

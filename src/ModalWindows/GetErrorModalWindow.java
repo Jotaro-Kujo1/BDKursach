@@ -9,7 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-public class RegModalWindow {
+public class GetErrorModalWindow {
 
     @FXML
     private ResourceBundle resources;

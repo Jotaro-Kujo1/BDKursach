@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Unemployed;
 
-public class GetUnemplController implements ToPane{
+public class GetUnemplController implements ToPane, ToGetError{
 
     private ObservableList<Unemployed> osList = FXCollections.observableArrayList();
 
@@ -174,8 +174,10 @@ public class GetUnemplController implements ToPane{
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
             Unemployed unemployed = db.getUnemployedForId(Integer.parseInt(IdTextArea.getText()));
-            osList.add(unemployed);
-            unemplTable.setItems(osList);
+            if(unemployed!=null) {
+                osList.add(unemployed);
+                unemplTable.setItems(osList);
+            }else toGerErrorModWindw();
             IdTextArea.clear();
         });
 

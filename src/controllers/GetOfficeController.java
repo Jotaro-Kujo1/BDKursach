@@ -13,7 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Education;
 import pojo.Office;
 
-public class GetOfficeController implements ToPane{
+public class GetOfficeController implements ToPane, ToGetError{
 
     private ObservableList<Office> osList = FXCollections.observableArrayList();
 
@@ -132,8 +132,10 @@ public class GetOfficeController implements ToPane{
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
             Office office = db.getOfficeForId(Integer.parseInt(IdTextArea.getText()));
-            osList.add(office);
-            officeTable.setItems(osList);
+            if(office!=null) {
+                osList.add(office);
+                officeTable.setItems(osList);
+            }else toGerErrorModWindw();
             IdTextArea.clear();
         });
 

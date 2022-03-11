@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Vacancy;
 
-public class GetVacancyController implements ToPane{
+public class GetVacancyController implements ToPane, ToGetError{
 
     private ObservableList<Vacancy> osList = FXCollections.observableArrayList();
 
@@ -157,8 +157,10 @@ public class GetVacancyController implements ToPane{
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction( event -> {
             Vacancy vacancy = db.getVacancyForId(Integer.parseInt(IdTextArea.getText()));
-            osList.add(vacancy);
-            vacancyTable.setItems(osList);
+            if(vacancy!=null) {
+                osList.add(vacancy);
+                vacancyTable.setItems(osList);
+            }else toGerErrorModWindw();
             IdTextArea.clear();
         });
 

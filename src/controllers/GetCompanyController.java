@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Company;
 
-public class GetCompanyController implements ToPane{
+public class GetCompanyController implements ToPane, ToGetError{
 
     private ObservableList<Company> osList = FXCollections.observableArrayList();
 
@@ -131,8 +131,10 @@ public class GetCompanyController implements ToPane{
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
             Company company = db.getCompanyForId(Integer.parseInt(IdTextArea.getText()));
-            osList.add(company);
-            companyTable.setItems(osList);
+            if(company!=null) {
+                osList.add(company);
+                companyTable.setItems(osList);
+            }else toGerErrorModWindw();
             IdTextArea.clear();
         });
 

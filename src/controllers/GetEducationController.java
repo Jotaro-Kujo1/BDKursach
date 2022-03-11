@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Education;
 
-public class GetEducationController implements ToPane{
+public class GetEducationController implements ToPane, ToGetError{
 
     private ObservableList<Education> osList = FXCollections.observableArrayList();
 
@@ -131,8 +131,10 @@ public class GetEducationController implements ToPane{
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
             Education education = db.getEducationForId(Integer.parseInt(IdTextArea.getText()));
-            osList.add(education);
-            educationTable.setItems(osList);
+            if(education!=null) {
+                osList.add(education);
+                educationTable.setItems(osList);
+            }else toGerErrorModWindw();
             IdTextArea.clear();
         });
 
