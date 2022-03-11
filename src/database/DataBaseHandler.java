@@ -467,4 +467,104 @@ public class DataBaseHandler {
         return company;
     }
 
+    public Country getCountryForId(int id){
+        String sqlQuery = "SELECT * FROM country WHERE Id='" + id + "'";
+        Country country = null;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                country = new Country(Integer.parseInt(rs.getString("Id")), rs.getString("Страна"));
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return country;
+    }
+
+    public Education getEducationForId(int id){
+        String sqlQuery = "SELECT * FROM education WHERE Id='" + id + "'";
+        Education education = null;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                education = new Education(Integer.parseInt(rs.getString("Id")), rs.getString("Образование"));
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return education;
+    }
+
+    public Office getOfficeForId(int id){
+        String sqlQuery = "SELECT * FROM offices WHERE Id='" + id + "'";
+        Office office = null;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                office = new Office(Integer.parseInt(rs.getString("Id")), rs.getString("Город"));
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return office;
+    }
+
+    public Skill getSkillForId(int id){
+        String sqlQuery = "SELECT * FROM skills WHERE Id='" + id + "'";
+        Skill skill = null;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                skill = new Skill(Integer.parseInt(rs.getString("Id")), rs.getString("Умение"));
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return skill;
+    }
+
+    public Speciality getSpecialityForId(int id){
+        String sqlQuery = "SELECT * FROM speciality WHERE Id='" + id + "'";
+        Speciality speciality = null;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                speciality = new Speciality(Integer.parseInt(rs.getString("Id")), Integer.parseInt(rs.getString("Специальность")),Integer.parseInt(rs.getString("Зарплата")),Integer.parseInt(rs.getString("Человек")));
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return speciality;
+    }
+
+    public Unemployed getUnemployedForId(int id){
+        String sqlQuery = "SELECT * FROM unemployed WHERE Id='" + id + "'";
+        Unemployed unemployed = null;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                unemployed = new Unemployed(Integer.parseInt(rs.getString("Id")),rs.getString("Фамилия"),rs.getString("Имя"),rs.getString("Отчество"),Integer.parseInt(rs.getString("Возраст")),
+                        Integer.parseInt(rs.getString("Пол")),Integer.parseInt(rs.getString("Образование")), Integer.parseInt(rs.getString("Опыт")), rs.getString("Контакты"), Integer.parseInt(rs.getString("Страна")),
+                        Integer.parseInt(rs.getString("Предыдущее место работы")),rs.getString("Паспорт"));
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return unemployed;
+    }
+
+    public Vacancy getVacancyForId(int id){
+        String sqlQuery = "SELECT * FROM vacancy WHERE Id='" + id + "'";
+        Vacancy vacancy = null;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                vacancy = new Vacancy(Integer.parseInt(rs.getString("Id")), Integer.parseInt(rs.getString("Вакансия")),Integer.parseInt(rs.getString("Опыт")),Integer.parseInt(rs.getString("Зарплата")),
+                        Integer.parseInt(rs.getString("Количество рабочих мест")),Integer.parseInt(rs.getString("Льготы")),Integer.parseInt(rs.getString("Офисы")),Integer.parseInt(rs.getString("Предприятие")));
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return vacancy;
+    }
 }

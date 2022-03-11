@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Vacancy;
 
 public class GetVacancyController implements ToPane{
@@ -141,6 +142,27 @@ public class GetVacancyController implements ToPane{
 
     @FXML
     void initialize() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Vacancy,Integer>("id"));
+        skillColumn.setCellValueFactory(new PropertyValueFactory<Vacancy,Integer>("skill"));
+        experienceColumn.setCellValueFactory(new PropertyValueFactory<Vacancy,Integer>("experience"));
+        salaryColumn.setCellValueFactory(new PropertyValueFactory<Vacancy,Integer>("salary"));
+        numberOfWorkplacesColumn.setCellValueFactory(new PropertyValueFactory<Vacancy,Integer>("numberOfWorkplaces"));
+        privilegesColumn.setCellValueFactory(new PropertyValueFactory<Vacancy,Integer>("privileges"));
+        officeColumn.setCellValueFactory(new PropertyValueFactory<Vacancy,Integer>("office"));
+        companyColumn.setCellValueFactory(new PropertyValueFactory<Vacancy,Integer>("company"));
+
+
+
+        getButton.setOnMouseEntered(event -> getButton.setStyle("-fx-background-color: #808080;"));
+        getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
+        getButton.setOnAction( event -> {
+            Vacancy vacancy = db.getVacancyForId(Integer.parseInt(IdTextArea.getText()));
+            osList.add(vacancy);
+            vacancyTable.setItems(osList);
+            IdTextArea.clear();
+        });
+
+
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addUnemplPane.fxml");

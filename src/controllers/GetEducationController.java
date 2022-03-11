@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Education;
 
 public class GetEducationController implements ToPane{
@@ -123,6 +124,19 @@ public class GetEducationController implements ToPane{
 
     @FXML
     void initialize() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Education,Integer>("id"));
+        educationColumn.setCellValueFactory(new PropertyValueFactory<Education,String>("education"));
+
+        getButton.setOnMouseEntered(event -> getButton.setStyle("-fx-background-color: #808080;"));
+        getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
+        getButton.setOnAction(event -> {
+            Education education = db.getEducationForId(Integer.parseInt(IdTextArea.getText()));
+            osList.add(education);
+            educationTable.setItems(osList);
+            IdTextArea.clear();
+        });
+
+
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addUnemplPane.fxml");

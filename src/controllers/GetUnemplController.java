@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Unemployed;
 
 public class GetUnemplController implements ToPane{
@@ -153,6 +154,32 @@ public class GetUnemplController implements ToPane{
 
     @FXML
     void initialize() {
+        idColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("id"));
+        surnameColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,String>("surname"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,String>("name"));
+        patronymicColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,String>("patronymic"));
+        ageColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("age"));
+        gendrColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("gender"));
+        educationColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("education"));
+        expColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("experience"));
+        contactsColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,String>("contacts"));
+        countryColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("country"));
+        previousEmploymentColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("previousEmployment"));
+        passportColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,String>("passport"));
+
+
+
+
+        getButton.setOnMouseEntered(event -> getButton.setStyle("-fx-background-color: #808080;"));
+        getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
+        getButton.setOnAction(event -> {
+            Unemployed unemployed = db.getUnemployedForId(Integer.parseInt(IdTextArea.getText()));
+            osList.add(unemployed);
+            unemplTable.setItems(osList);
+            IdTextArea.clear();
+        });
+
+
         addUnempButton.setOnAction(event -> {
             addMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/addUnemplPane.fxml");
