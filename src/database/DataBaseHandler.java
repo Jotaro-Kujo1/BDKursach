@@ -453,4 +453,18 @@ public class DataBaseHandler {
         }
     }
 
+    public Company getCompanyForId(int id){
+        String sqlQuery = "SELECT * FROM company WHERE Id='" + id + "'";
+        Company company = null;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            if(rs.next()){
+                company = new Company(Integer.parseInt(rs.getString("Id")), rs.getString("Компания"));
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return company;
+    }
+
 }
