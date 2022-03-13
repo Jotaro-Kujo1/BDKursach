@@ -1,5 +1,6 @@
 package controllers;
 
+import database.CountryDomain;
 import database.DataBaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,8 @@ public class AddCountryController implements ToPane{
     private List<Country> countryList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private CountryDomain countryDomain = new CountryDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -142,7 +145,8 @@ public class AddCountryController implements ToPane{
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
             Country country = new Country(Integer.parseInt(IdTextArea.getText()),countryTextArea.getText());
-            db.addCountry(country);
+            //db.addCountry(country);
+            countryDomain.add(country);
             countryList.clear();
             osList.clear();
             showData();

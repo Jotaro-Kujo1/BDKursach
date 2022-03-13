@@ -42,5 +42,16 @@
             <MenuItem fx:id="getCompanyButton" mnemonicParsing="false" text="Получить предприятие" />
          </items>
       </MenuButton>
+      <MenuButton fx:id="customMainButton" layoutX="701.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="171.0" style="-fx-background-color: #696969;" text="Другое" textAlignment="CENTER" textFill="WHITE">
+         <items>
+            <MenuItem fx:id="getFromCountry" mnemonicParsing="false" text="Получить людей из страны..." />
+            <MenuItem fx:id="getWithEducation" mnemonicParsing="false" text="Получить людей собразованием..." />
+            <MenuItem fx:id="getSomeAge" mnemonicParsing="false" text="Получить людей возраста..." />
+            <MenuItem fx:id="getPeopleForGender" mnemonicParsing="false" text="Получить людей пола..." />
+            <MenuItem fx:id="getPeopleForSpeciality" mnemonicParsing="false" text="Получить людей по специальности..." />
+            <MenuItem fx:id="getSpecialityForPeople" mnemonicParsing="false" text="Получить специальности по человеку..." />
+            <MenuItem fx:id="getVacancyAndPeopleMatch" mnemonicParsing="false" text="Получить совпадения вакансий и людей" />
+         </items>
+      </MenuButton>
    </children>
 </AnchorPane>

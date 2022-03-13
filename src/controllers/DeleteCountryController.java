@@ -1,5 +1,6 @@
 package controllers;
 
+import database.CountryDomain;
 import database.DataBaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,8 @@ public class DeleteCountryController implements ToPane {
     private List<Country> countryList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private CountryDomain countryDomain = new CountryDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -133,11 +136,13 @@ public class DeleteCountryController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Country country = countryTable.getSelectionModel().getSelectedItem();
-            db.deleteCountry(country.getId());
+            //db.deleteCountry(country.getId());
+            countryDomain.delete(country.getId());
             countryList.clear();
             osList.clear();
             try{
-                countryList = db.readCountryResultSet();
+                //countryList = db.readCountryResultSet();
+                countryList = countryDomain.readResultSet();
                 for(Country i : countryList){
                     osList.add(i);
                 }

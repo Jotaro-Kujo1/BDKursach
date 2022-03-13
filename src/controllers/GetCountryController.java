@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import database.CountryDomain;
 import database.DataBaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +20,8 @@ public class GetCountryController implements ToPane, ToGetError{
     private List<Country> countryList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private CountryDomain countryDomain = new CountryDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -133,7 +136,8 @@ public class GetCountryController implements ToPane, ToGetError{
         getButton.setOnMouseEntered(event -> getButton.setStyle("-fx-background-color: #808080;"));
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
-            Country country = db.getCountryForId(Integer.parseInt(IdTextArea.getText()));
+            //Country country = db.getCountryForId(Integer.parseInt(IdTextArea.getText()));
+            Country country = countryDomain.get(Integer.parseInt(IdTextArea.getText()));
             if(country!=null) {
                 osList.add(country);
                 countryTable.setItems(osList);
