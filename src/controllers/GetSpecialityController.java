@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import database.DataBaseHandler;
+import database.SpecialityDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ public class GetSpecialityController implements ToPane, ToGetError{
     private List<Speciality> specialityList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private SpecialityDomain specialityDomain = new SpecialityDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -140,7 +143,7 @@ public class GetSpecialityController implements ToPane, ToGetError{
         getButton.setOnMouseEntered(event -> getButton.setStyle("-fx-background-color: #808080;"));
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction( event -> {
-            Speciality speciality = db.getSpecialityForId(Integer.parseInt(IdTextArea.getText()));
+            Speciality speciality = specialityDomain.get(Integer.parseInt(IdTextArea.getText()));
             if(speciality!=null) {
                 osList.add(speciality);
                 specialityTable.setItems(osList);

@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DataBaseHandler;
+import database.SpecialityDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ public class DeleteSpecialityController implements ToPane {
     private List<Speciality> specialityList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private SpecialityDomain specialityDomain = new SpecialityDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -140,11 +143,11 @@ public class DeleteSpecialityController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Speciality speciality = specialityTable.getSelectionModel().getSelectedItem();
-            db.deleteSpeciality(speciality.getId());
+            specialityDomain.delete(speciality.getId());
             specialityList.clear();
             osList.clear();
             try{
-                specialityList = db.readSpecialityResultSet();
+                specialityList = specialityDomain.readResultSet();
                 for(Speciality i : specialityList){
                     osList.add(i);
                 }
@@ -253,7 +256,7 @@ public class DeleteSpecialityController implements ToPane {
     }
 
     private void showData(){
-        specialityList = db.readSpecialityResultSet();
+        specialityList = specialityDomain.readResultSet();
         for(Speciality i: specialityList){
             osList.add(i);
         }
