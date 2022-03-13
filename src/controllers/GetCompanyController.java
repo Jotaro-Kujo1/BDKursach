@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import database.CompanyDomain;
 import database.DataBaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +20,8 @@ public class GetCompanyController implements ToPane, ToGetError{
     private List<Company> companyList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private CompanyDomain companyDomain = new CompanyDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -130,7 +133,7 @@ public class GetCompanyController implements ToPane, ToGetError{
         getButton.setOnMouseEntered(event -> getButton.setStyle("-fx-background-color: #808080;"));
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
-            Company company = db.getCompanyForId(Integer.parseInt(IdTextArea.getText()));
+            Company company = companyDomain.get(Integer.parseInt(IdTextArea.getText()));
             if(company!=null) {
                 osList.add(company);
                 companyTable.setItems(osList);

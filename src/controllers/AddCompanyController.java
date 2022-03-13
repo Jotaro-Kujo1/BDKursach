@@ -2,6 +2,7 @@ package controllers;
 
 
 
+import database.CompanyDomain;
 import database.DataBaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,8 @@ public class AddCompanyController implements ToPane{
     private List<Company> companyList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private CompanyDomain companyDomain = new CompanyDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -141,7 +144,8 @@ public class AddCompanyController implements ToPane{
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
             Company company = new Company(Integer.parseInt(IdTextArea.getText()),companyTextArea.getText());
-            db.addCompany(company);
+            //db.addCompany(company);
+            companyDomain.add(company);
             companyList.clear();
             osList.clear();
             showData();

@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import database.CompanyDomain;
+import database.CountryDomain;
 import database.DataBaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +21,10 @@ public class AddUnemplController implements ToPane{
     private List<Unemployed> unempList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private CountryDomain countryDomain = new CountryDomain();
+
+    private CompanyDomain companyDomain = new CompanyDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -210,7 +216,7 @@ public class AddUnemplController implements ToPane{
             Unemployed unemployed = new Unemployed(Integer.parseInt(IdTextArea.getText()),surnameTextArea.getText(),nameTextArea.getText(),
                     patronymicTextArea.getText(),Integer.parseInt(ageTextArea.getText()),db.genderTransformation(genderTextArea.getText()),
                     db.educationTransformation(educationTextArea.getText()),Integer.parseInt(experienceTextArea.getText()),contactsTextArea.getText(),
-                    db.countryTransformation(countryTextArea.getText()),db.previousPlaceTransformation(previousEmploymentTextArea.getText()),passportTextArea.getText());
+                    countryDomain.transformation(countryTextArea.getText()),companyDomain.transformation(previousEmploymentTextArea.getText()),passportTextArea.getText());
             db.addUnempl(unemployed);
             unempList.clear();
             osList.clear();

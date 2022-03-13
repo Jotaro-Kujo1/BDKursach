@@ -1,5 +1,6 @@
 package controllers;
 
+import database.CompanyDomain;
 import database.DataBaseHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,8 @@ public class DeleteCompanyController implements ToPane {
     private List<Company> companyList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private CompanyDomain companyDomain = new CompanyDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -133,11 +136,12 @@ public class DeleteCompanyController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Company company = companyTable.getSelectionModel().getSelectedItem();
-            db.deleteCompany(company.getId());
+            //db.deleteCompany(company.getId());
+            companyDomain.delete(company.getId());
             companyList.clear();
             osList.clear();
             try{
-                companyList = db.readCompanyResultSet();
+                companyList = companyDomain.readResultSet();
                 for(Company i : companyList){
                     osList.add(i);
                 }
