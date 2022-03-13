@@ -1,6 +1,6 @@
 package controllers;
 
-import database.DataBaseHandler;
+import database.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +21,14 @@ public class AddVacancyController implements ToPane{
     private List<Vacancy> vacancyList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private VacancyDomain vacancyDomain = new VacancyDomain();
+
+    private SpecialityDomain specialityDomain = new SpecialityDomain();
+
+    private OfficeDomain officeDomain = new OfficeDomain();
+
+    private CompanyDomain companyDomain = new CompanyDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -182,9 +190,9 @@ public class AddVacancyController implements ToPane{
         addButton.setOnMouseEntered(event -> addButton.setStyle("-fx-background-color: #808080;"));
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
-            Vacancy vacancy = new Vacancy(Integer.parseInt(IdTextArea.getText()),db.specialityTransformation(skillTextArea.getText()),Integer.parseInt(experienceTextArea.getText()),Integer.parseInt(salaryTextArea.getText()),
-                    Integer.parseInt(numberOfWorkplacesTextArea.getText()),db.privilegesTransformation(privilegesTextArea.getText()),db.cityTransformation(officeTextArea.getText()),db.previousPlaceTransformation(companyTextArea.getText()));
-            db.addVacancy(vacancy);
+            Vacancy vacancy = new Vacancy(Integer.parseInt(IdTextArea.getText()),specialityDomain.transformation(skillTextArea.getText()),Integer.parseInt(experienceTextArea.getText()),Integer.parseInt(salaryTextArea.getText()),
+                    Integer.parseInt(numberOfWorkplacesTextArea.getText()),db.privilegesTransformation(privilegesTextArea.getText()),officeDomain.transformation(officeTextArea.getText()),companyDomain.transformation(companyTextArea.getText()));
+            vacancyDomain.add(vacancy);
             vacancyList.clear();
             osList.clear();
             showData();
@@ -288,7 +296,7 @@ public class AddVacancyController implements ToPane{
     }
 
     private void showData(){
-        vacancyList = db.readVacancyResultSet();
+        vacancyList = vacancyDomain.readResultSet();
         for(Vacancy i: vacancyList){
             osList.add(i);
         }

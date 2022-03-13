@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DataBaseHandler;
+import database.VacancyDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,6 +21,8 @@ public class DeleteVacancyController implements ToPane {
     private List<Vacancy> vacancyList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private VacancyDomain vacancyDomain = new VacancyDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -157,11 +160,11 @@ public class DeleteVacancyController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Vacancy vacancy = vacancyTable.getSelectionModel().getSelectedItem();
-            db.deleteVacancy(vacancy.getId());
+            vacancyDomain.delete(vacancy.getId());
             vacancyList.clear();
             osList.clear();
             try{
-                vacancyList = db.readVacancyResultSet();
+                vacancyList = vacancyDomain.readResultSet();
                 for(Vacancy i : vacancyList){
                     osList.add(i);
                 }
@@ -270,7 +273,7 @@ public class DeleteVacancyController implements ToPane {
     }
 
     private void showData(){
-        vacancyList = db.readVacancyResultSet();
+        vacancyList = vacancyDomain.readResultSet();
         for(Vacancy i: vacancyList){
             osList.add(i);
         }

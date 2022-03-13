@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import database.DataBaseHandler;
+import database.VacancyDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ public class GetVacancyController implements ToPane, ToGetError{
     private List<Vacancy> vacancyList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private VacancyDomain vacancyDomain = new VacancyDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -156,7 +159,7 @@ public class GetVacancyController implements ToPane, ToGetError{
         getButton.setOnMouseEntered(event -> getButton.setStyle("-fx-background-color: #808080;"));
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction( event -> {
-            Vacancy vacancy = db.getVacancyForId(Integer.parseInt(IdTextArea.getText()));
+            Vacancy vacancy = vacancyDomain.get(Integer.parseInt(IdTextArea.getText()));
             if(vacancy!=null) {
                 osList.add(vacancy);
                 vacancyTable.setItems(osList);
