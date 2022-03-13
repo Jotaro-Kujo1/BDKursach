@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DataBaseHandler;
+import database.UnemplDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ public class DeleteUnemplController implements ToPane {
     private List<Unemployed> unemplList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private UnemplDomain unemployedDomain = new UnemplDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -172,11 +175,11 @@ public class DeleteUnemplController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Unemployed unemployed = unemplTable.getSelectionModel().getSelectedItem();
-            db.deleteUnempl(unemployed.getId());
+            unemployedDomain.delete(unemployed.getId());
             unemplList.clear();
             osList.clear();
             try{
-                unemplList = db.readUnemplResultSet();
+                unemplList = unemployedDomain.readResultSet();
                 for(Unemployed i : unemplList){
                     osList.add(i);
                 }
@@ -285,7 +288,7 @@ public class DeleteUnemplController implements ToPane {
     }
 
     private void showData(){
-        unemplList = db.readUnemplResultSet();
+        unemplList = unemployedDomain.readResultSet();
         for(Unemployed i: unemplList){
             osList.add(i);
         }

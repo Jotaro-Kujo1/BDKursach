@@ -26,6 +26,7 @@ public class AddUnemplController implements ToPane{
 
     private EducationDomain educationDomain = new EducationDomain();
 
+    private UnemplDomain unemployedDomain = new UnemplDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -218,7 +219,7 @@ public class AddUnemplController implements ToPane{
                     patronymicTextArea.getText(),Integer.parseInt(ageTextArea.getText()),db.genderTransformation(genderTextArea.getText()),
                     educationDomain.transformation(educationTextArea.getText()),Integer.parseInt(experienceTextArea.getText()),contactsTextArea.getText(),
                     countryDomain.transformation(countryTextArea.getText()),companyDomain.transformation(previousEmploymentTextArea.getText()),passportTextArea.getText());
-            db.addUnempl(unemployed);
+            unemployedDomain.add(unemployed);
             unempList.clear();
             osList.clear();
             showData();
@@ -324,7 +325,7 @@ public class AddUnemplController implements ToPane{
     }
 
     private void showData(){
-        unempList = db.readUnemplResultSet();
+        unempList = unemployedDomain.readResultSet();
         for(Unemployed i: unempList){
             osList.add(i);
         }

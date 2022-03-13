@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import database.DataBaseHandler;
+import database.UnemplDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ public class GetUnemplController implements ToPane, ToGetError{
     private List<Unemployed> unempList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private UnemplDomain unemployedDomain = new UnemplDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -173,7 +176,7 @@ public class GetUnemplController implements ToPane, ToGetError{
         getButton.setOnMouseEntered(event -> getButton.setStyle("-fx-background-color: #808080;"));
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
-            Unemployed unemployed = db.getUnemployedForId(Integer.parseInt(IdTextArea.getText()));
+            Unemployed unemployed = unemployedDomain.get(Integer.parseInt(IdTextArea.getText()));
             if(unemployed!=null) {
                 osList.add(unemployed);
                 unemplTable.setItems(osList);
