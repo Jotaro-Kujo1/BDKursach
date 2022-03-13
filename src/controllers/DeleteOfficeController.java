@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DataBaseHandler;
+import database.OfficeDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,6 +21,8 @@ public class DeleteOfficeController implements ToPane {
     private List<Office> officeList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private OfficeDomain officeDomain = new OfficeDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -133,11 +136,11 @@ public class DeleteOfficeController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Office office = officeTable.getSelectionModel().getSelectedItem();
-            db.deleteOffice(office.getId());
+            officeDomain.delete(office.getId());
             officeList.clear();
             osList.clear();
             try{
-                officeList = db.readOfficeResultSet();
+                officeList = officeDomain.readResultSet();
                 for(Office i : officeList){
                     osList.add(i);
                 }
@@ -246,7 +249,7 @@ public class DeleteOfficeController implements ToPane {
     }
 
     private void showData(){
-        officeList = db.readOfficeResultSet();
+        officeList = officeDomain.readResultSet();
         for(Office i: officeList){
             osList.add(i);
         }

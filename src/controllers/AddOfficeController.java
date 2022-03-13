@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DataBaseHandler;
+import database.OfficeDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,6 +23,8 @@ public class AddOfficeController implements ToPane{
     private List<Office> officeList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private OfficeDomain officeDomain = new OfficeDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -143,7 +146,7 @@ public class AddOfficeController implements ToPane{
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
             Office office = new Office(Integer.parseInt(IdTextArea.getText()),cityTextArea.getText());
-            db.addOffice(office);
+            officeDomain.add(office);
             officeList.clear();
             osList.clear();
             showData();
