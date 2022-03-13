@@ -4,10 +4,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import database.CompanyDomain;
-import database.CountryDomain;
-import database.DataBaseHandler;
-import database.EducationDomain;
+import database.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,6 +25,7 @@ public class AddUnemplController implements ToPane{
     private CompanyDomain companyDomain = new CompanyDomain();
 
     private EducationDomain educationDomain = new EducationDomain();
+
 
     @FXML
     private ResourceBundle resources;

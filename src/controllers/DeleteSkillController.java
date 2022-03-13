@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DataBaseHandler;
+import database.SkillDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +22,8 @@ public class DeleteSkillController implements ToPane {
     private List<Skill> skillList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private SkillDomain skillDomain = new SkillDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -134,11 +137,11 @@ public class DeleteSkillController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Skill skill = skillTable.getSelectionModel().getSelectedItem();
-            db.deleteSkill(skill.getId());
+            skillDomain.delete(skill.getId());
             skillList.clear();
             osList.clear();
             try{
-                skillList = db.readSkillResultSet();
+                skillList = skillDomain.readResultSet();
                 for(Skill i : skillList){
                     osList.add(i);
                 }

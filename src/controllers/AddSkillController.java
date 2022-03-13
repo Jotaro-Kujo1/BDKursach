@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DataBaseHandler;
+import database.SkillDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,6 +23,8 @@ public class AddSkillController implements ToPane{
     private List<Skill> skillList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private SkillDomain skillDomain = new SkillDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -143,7 +146,7 @@ public class AddSkillController implements ToPane{
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
             Skill skill = new Skill(Integer.parseInt(IdTextArea.getText()),skillTextArea.getText());
-            db.addSkill(skill);
+            skillDomain.add(skill);
             skillList.clear();
             osList.clear();
             showData();
