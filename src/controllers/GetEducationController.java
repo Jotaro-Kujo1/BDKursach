@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import database.DataBaseHandler;
+import database.EducationDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +20,8 @@ public class GetEducationController implements ToPane, ToGetError{
     private List<Education> educationList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private EducationDomain educationDomain = new EducationDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -130,7 +133,7 @@ public class GetEducationController implements ToPane, ToGetError{
         getButton.setOnMouseEntered(event -> getButton.setStyle("-fx-background-color: #808080;"));
         getButton.setOnMouseExited(event -> getButton.setStyle("-fx-background-color: #696969;"));
         getButton.setOnAction(event -> {
-            Education education = db.getEducationForId(Integer.parseInt(IdTextArea.getText()));
+            Education education = educationDomain.get(Integer.parseInt(IdTextArea.getText()));
             if(education!=null) {
                 osList.add(education);
                 educationTable.setItems(osList);

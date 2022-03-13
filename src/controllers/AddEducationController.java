@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DataBaseHandler;
+import database.EducationDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +22,8 @@ public class AddEducationController implements ToPane{
     private List<Education> educationList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private EducationDomain educationDomain = new EducationDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -142,7 +145,7 @@ public class AddEducationController implements ToPane{
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
             Education education = new Education(Integer.parseInt(IdTextArea.getText()),educationTextArea.getText());
-            db.addEducation(education);
+            educationDomain.add(education);
             educationList.clear();
             osList.clear();
             showData();

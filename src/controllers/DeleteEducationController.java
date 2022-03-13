@@ -1,6 +1,7 @@
 package controllers;
 
 import database.DataBaseHandler;
+import database.EducationDomain;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,6 +22,8 @@ public class DeleteEducationController implements ToPane {
     private List<Education> educationList;
 
     private DataBaseHandler db = new DataBaseHandler();
+
+    private EducationDomain educationDomain = new EducationDomain();
 
     @FXML
     private ResourceBundle resources;
@@ -134,11 +137,11 @@ public class DeleteEducationController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Education education = educationTable.getSelectionModel().getSelectedItem();
-            db.deleteEducation(education.getId());
+            educationDomain.delete(education.getId());
             educationList.clear();
             osList.clear();
             try{
-                educationList = db.readEducationResultSet();
+                educationList = educationDomain.readResultSet();
                 for(Education i : educationList){
                     osList.add(i);
                 }
