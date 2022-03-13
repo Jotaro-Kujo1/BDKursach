@@ -19,8 +19,6 @@ public class GetVacancyController implements ToPane, ToGetError{
 
     private List<Vacancy> vacancyList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private VacancyDomain vacancyDomain = new VacancyDomain();
 
     @FXML

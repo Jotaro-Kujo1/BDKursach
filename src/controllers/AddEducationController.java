@@ -21,8 +21,6 @@ public class AddEducationController implements ToPane{
 
     private List<Education> educationList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private EducationDomain educationDomain = new EducationDomain();
 
     @FXML
@@ -249,7 +247,7 @@ public class AddEducationController implements ToPane{
     }
 
     private void showData(){
-        educationList = db.readEducationResultSet();
+        educationList = educationDomain.readResultSet();
         for(Education i: educationList){
             osList.add(i);
         }

@@ -19,8 +19,6 @@ public class GetEducationController implements ToPane, ToGetError{
 
     private List<Education> educationList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private EducationDomain educationDomain = new EducationDomain();
 
     @FXML

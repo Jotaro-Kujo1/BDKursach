@@ -21,8 +21,6 @@ public class AddCompanyController implements ToPane{
 
     private List<Company> companyList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private CompanyDomain companyDomain = new CompanyDomain();
 
     @FXML
@@ -144,7 +142,6 @@ public class AddCompanyController implements ToPane{
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
             Company company = new Company(Integer.parseInt(IdTextArea.getText()),companyTextArea.getText());
-            //db.addCompany(company);
             companyDomain.add(company);
             companyList.clear();
             osList.clear();
@@ -249,7 +246,7 @@ public class AddCompanyController implements ToPane{
     }
 
     private void showData(){
-        companyList = db.readCompanyResultSet();
+        companyList = companyDomain.readResultSet();
         for(Company i: companyList){
             osList.add(i);
         }

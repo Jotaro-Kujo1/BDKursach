@@ -21,8 +21,6 @@ public class DeleteEducationController implements ToPane {
 
     private List<Education> educationList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private EducationDomain educationDomain = new EducationDomain();
 
     @FXML
@@ -250,7 +248,7 @@ public class DeleteEducationController implements ToPane {
     }
 
     private void showData(){
-        educationList = db.readEducationResultSet();
+        educationList = educationDomain.readResultSet();
         for(Education i: educationList){
             osList.add(i);
         }

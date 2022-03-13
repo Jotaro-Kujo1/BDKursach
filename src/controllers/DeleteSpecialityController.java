@@ -19,8 +19,6 @@ public class DeleteSpecialityController implements ToPane {
 
     private List<Speciality> specialityList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private SpecialityDomain specialityDomain = new SpecialityDomain();
 
     @FXML

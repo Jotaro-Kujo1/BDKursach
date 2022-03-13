@@ -19,8 +19,6 @@ public class GetSkillController implements ToPane, ToGetError{
 
     private List<Skill> skillList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private SkillDomain skillDomain = new SkillDomain();
 
     @FXML

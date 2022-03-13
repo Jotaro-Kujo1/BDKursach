@@ -19,8 +19,6 @@ public class GetUnemplController implements ToPane, ToGetError{
 
     private List<Unemployed> unempList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private UnemplDomain unemployedDomain = new UnemplDomain();
 
     @FXML

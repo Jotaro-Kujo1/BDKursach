@@ -20,8 +20,6 @@ public class DeleteVacancyController implements ToPane {
 
     private List<Vacancy> vacancyList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private VacancyDomain vacancyDomain = new VacancyDomain();
 
     @FXML

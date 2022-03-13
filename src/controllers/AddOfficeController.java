@@ -22,8 +22,6 @@ public class AddOfficeController implements ToPane{
 
     private List<Office> officeList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private OfficeDomain officeDomain = new OfficeDomain();
 
     @FXML
@@ -250,7 +248,7 @@ public class AddOfficeController implements ToPane{
     }
 
     private void showData(){
-        officeList = db.readOfficeResultSet();
+        officeList = officeDomain.readResultSet();
         for(Office i: officeList){
             osList.add(i);
         }

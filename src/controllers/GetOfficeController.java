@@ -20,8 +20,6 @@ public class GetOfficeController implements ToPane, ToGetError{
 
     private List<Office> officeList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private OfficeDomain officeDomain = new OfficeDomain();
 
     @FXML

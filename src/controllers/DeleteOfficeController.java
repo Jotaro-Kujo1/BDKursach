@@ -20,8 +20,6 @@ public class DeleteOfficeController implements ToPane {
 
     private List<Office> officeList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private OfficeDomain officeDomain = new OfficeDomain();
 
     @FXML

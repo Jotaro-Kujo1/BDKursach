@@ -19,8 +19,6 @@ public class DeleteUnemplController implements ToPane {
 
     private List<Unemployed> unemplList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private UnemplDomain unemployedDomain = new UnemplDomain();
 
     @FXML

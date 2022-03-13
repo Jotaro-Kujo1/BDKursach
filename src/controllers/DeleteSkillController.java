@@ -21,8 +21,6 @@ public class DeleteSkillController implements ToPane {
 
     private List<Skill> skillList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private SkillDomain skillDomain = new SkillDomain();
 
     @FXML
@@ -250,7 +248,7 @@ public class DeleteSkillController implements ToPane {
     }
 
     private void showData(){
-        skillList = db.readSkillResultSet();
+        skillList = skillDomain.readResultSet();
         for(Skill i: skillList){
             osList.add(i);
         }

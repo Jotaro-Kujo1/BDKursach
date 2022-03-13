@@ -20,8 +20,6 @@ public class DeleteCountryController implements ToPane {
 
     private List<Country> countryList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private CountryDomain countryDomain = new CountryDomain();
 
     @FXML
@@ -136,12 +134,10 @@ public class DeleteCountryController implements ToPane {
         deleteButton.setOnMouseExited(event -> deleteButton.setStyle("-fx-background-color: #696969;"));
         deleteButton.setOnAction(event -> {
             Country country = countryTable.getSelectionModel().getSelectedItem();
-            //db.deleteCountry(country.getId());
             countryDomain.delete(country.getId());
             countryList.clear();
             osList.clear();
             try{
-                //countryList = db.readCountryResultSet();
                 countryList = countryDomain.readResultSet();
                 for(Country i : countryList){
                     osList.add(i);
@@ -250,7 +246,7 @@ public class DeleteCountryController implements ToPane {
     }
 
     private void showData(){
-        countryList = db.readCountryResultSet();
+        countryList = countryDomain.readResultSet();
         for(Country i: countryList){
             osList.add(i);
         }

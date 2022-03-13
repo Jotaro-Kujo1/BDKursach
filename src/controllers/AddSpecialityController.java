@@ -26,7 +26,6 @@ public class AddSpecialityController implements ToPane{
 
     private List<Speciality> specialityList;
 
-    private DataBaseHandler db = new DataBaseHandler();
 
     private SpecialityDomain specialityDomain = new SpecialityDomain();
 
@@ -266,7 +265,7 @@ public class AddSpecialityController implements ToPane{
     }
 
     private void showData(){
-        specialityList = db.readSpecialityResultSet();
+        specialityList = specialityDomain.readResultSet();
         for(Speciality i: specialityList){
             osList.add(i);
         }

@@ -21,8 +21,6 @@ public class AddCountryController implements ToPane{
 
     private List<Country> countryList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private CountryDomain countryDomain = new CountryDomain();
 
     @FXML
@@ -145,7 +143,6 @@ public class AddCountryController implements ToPane{
         addButton.setOnMouseExited(event -> addButton.setStyle("-fx-background-color: #696969;"));
         addButton.setOnAction( event -> {
             Country country = new Country(Integer.parseInt(IdTextArea.getText()),countryTextArea.getText());
-            //db.addCountry(country);
             countryDomain.add(country);
             countryList.clear();
             osList.clear();
@@ -250,7 +247,7 @@ public class AddCountryController implements ToPane{
     }
 
     private void showData(){
-        countryList = db.readCountryResultSet();
+        countryList = countryDomain.readResultSet();
         for(Country i: countryList){
             osList.add(i);
         }

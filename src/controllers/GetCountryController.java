@@ -19,8 +19,6 @@ public class GetCountryController implements ToPane, ToGetError{
 
     private List<Country> countryList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private CountryDomain countryDomain = new CountryDomain();
 
     @FXML

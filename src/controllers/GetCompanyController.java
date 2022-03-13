@@ -19,8 +19,6 @@ public class GetCompanyController implements ToPane, ToGetError{
 
     private List<Company> companyList;
 
-    private DataBaseHandler db = new DataBaseHandler();
-
     private CompanyDomain companyDomain = new CompanyDomain();
 
     @FXML
@@ -235,6 +233,5 @@ public class GetCompanyController implements ToPane, ToGetError{
             getMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getEducationPane.fxml");
         });
-
     }
 }
