@@ -82,4 +82,42 @@ public class UnemplDomain extends CrudRepository{
         }
         return (List<T>) list;
     }
+
+    public List<Unemployed> getPeopleForCountry(int id){
+        List<Unemployed> list = new ArrayList<Unemployed>();
+        Unemployed unemployed = null;
+        //String sqlQuery = "SELECT unemployed.* , country.Id FROM unemployed, country WHERE unemployed.Страна = country." + id;
+        String sqlQuery = "SELECT unemployed.* , country.Id FROM unemployed INNER JOIN country ON country.Id = unemployed.Страна WHERE country.Id =" + id;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while (rs.next()){
+                unemployed = new Unemployed(Integer.parseInt(rs.getString("Id")),rs.getString("Фамилия"),rs.getString("Имя"),rs.getString("Отчество"),Integer.parseInt(rs.getString("Возраст")),
+                        Integer.parseInt(rs.getString("Пол")),Integer.parseInt(rs.getString("Образование")), Integer.parseInt(rs.getString("Опыт")), rs.getString("Контакты"), Integer.parseInt(rs.getString("Страна")),
+                        Integer.parseInt(rs.getString("Предыдущее место работы")),rs.getString("Паспорт"));
+                list.add(unemployed);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Unemployed> getPeopleForGender(int id){
+        List<Unemployed> list = new ArrayList<Unemployed>();
+        Unemployed unemployed = null;
+        //String sqlQuery = "SELECT unemployed.* , country.Id FROM unemployed, country WHERE unemployed.Страна = country." + id;
+        String sqlQuery = "SELECT unemployed.* , gender.Id FROM unemployed INNER JOIN gender ON gender.Id = unemployed.Пол WHERE gender.Id =" + id;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while (rs.next()){
+                unemployed = new Unemployed(Integer.parseInt(rs.getString("Id")),rs.getString("Фамилия"),rs.getString("Имя"),rs.getString("Отчество"),Integer.parseInt(rs.getString("Возраст")),
+                        Integer.parseInt(rs.getString("Пол")),Integer.parseInt(rs.getString("Образование")), Integer.parseInt(rs.getString("Опыт")), rs.getString("Контакты"), Integer.parseInt(rs.getString("Страна")),
+                        Integer.parseInt(rs.getString("Предыдущее место работы")),rs.getString("Паспорт"));
+                list.add(unemployed);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
+    }
 }
