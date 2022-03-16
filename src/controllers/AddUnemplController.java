@@ -169,14 +169,14 @@ public class AddUnemplController implements ToPane{
     @FXML
     private MenuItem getPeopleForGender;
 
-    @FXML
-    private MenuItem getPeopleForSpeciality;
+    //@FXML
+    //private MenuItem getPeopleForSpeciality;
 
     @FXML
     private MenuItem getSpecialityForPeople;
 
-    @FXML
-    private MenuItem getVacancyAndPeopleMatch;
+    //@FXML
+    //private MenuItem getVacancyAndPeopleMatch;
 
     @FXML
     private TextField IdTextArea;
@@ -362,18 +362,24 @@ public class AddUnemplController implements ToPane{
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getPeopleForGenderPane.fxml");
         });
+        /*
         getPeopleForSpeciality.setOnAction(event -> {
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getPeopleForSpecialityPane.fxml");
         });
+
+         */
         getSpecialityForPeople.setOnAction(event -> {
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
         });
+        /*
         getVacancyAndPeopleMatch.setOnAction(event -> {
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getVacancyAndPeopleMatchPane.fxml");
         });
+
+         */
     }
 
     private void showData(){

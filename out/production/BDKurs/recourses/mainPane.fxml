@@ -48,9 +48,7 @@
             <MenuItem fx:id="getWithEducation" mnemonicParsing="false" text="Получить людей собразованием..." />
             <MenuItem fx:id="getSomeAge" mnemonicParsing="false" text="Получить людей возраста..." />
             <MenuItem fx:id="getPeopleForGender" mnemonicParsing="false" text="Получить людей пола..." />
-            <MenuItem fx:id="getPeopleForSpeciality" mnemonicParsing="false" text="Получить людей по специальности..." />
             <MenuItem fx:id="getSpecialityForPeople" mnemonicParsing="false" text="Получить специальности по человеку..." />
-            <MenuItem fx:id="getVacancyAndPeopleMatch" mnemonicParsing="false" text="Получить совпадения вакансий и людей" />
          </items>
       </MenuButton>
    </children>

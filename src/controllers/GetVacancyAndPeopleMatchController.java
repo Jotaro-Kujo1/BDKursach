@@ -110,14 +110,14 @@ public class GetVacancyAndPeopleMatchController {
     @FXML
     private MenuItem getPeopleForGender;
 
-    @FXML
-    private MenuItem getPeopleForSpeciality;
+    //@FXML
+    //private MenuItem getPeopleForSpeciality;
 
     @FXML
     private MenuItem getSpecialityForPeople;
 
-    @FXML
-    private MenuItem getVacancyAndPeopleMatch;
+    //@FXML
+    //private MenuItem getVacancyAndPeopleMatch;
 
     @FXML
     void initialize() {

@@ -48,21 +48,7 @@ public class DataBaseHandler {
 
 
 
-    public List<Speciality> readSpecialityResultSet(){
-        String sqlQuery = "SELECT * FROM speciality";
-        List<Speciality> list = new ArrayList<>();
-        try(Statement statement = getDbConnection().createStatement()){
-            Speciality speciality = null;
-            ResultSet rs = statement.executeQuery(sqlQuery);
-            while(rs.next()){
-                speciality = new Speciality(Integer.parseInt(rs.getString("Id")), Integer.parseInt(rs.getString("Специальность")),Integer.parseInt(rs.getString("Зарплата")),Integer.parseInt(rs.getString("Человек")));
-                list.add(speciality);
-            }
-        }catch (SQLException | ClassNotFoundException ex){
-            ex.printStackTrace();
-        }
-        return list;
-    }
+
 
 
 

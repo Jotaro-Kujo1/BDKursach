@@ -2,6 +2,7 @@ package database;
 
 import pojo.Skill;
 import pojo.Speciality;
+import pojo.Unemployed;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,5 +81,21 @@ public class SpecialityDomain extends CrudRepository{
             ex.printStackTrace();
         }
         return (List<T>) list;
+    }
+
+    public List<Speciality> getSpecialityForPeople(int id){
+        List<Speciality> list = new ArrayList<Speciality>();
+        Speciality speciality = null;
+        String sqlQuery = "SELECT speciality.* , unemployed.Id FROM speciality INNER JOIN unemployed ON unemployed.Id = speciality.Человек WHERE speciality.Человек =" + id;
+        try(Statement statement = getDbConnection().createStatement()){
+            ResultSet rs = statement.executeQuery(sqlQuery);
+            while (rs.next()){
+                speciality = new Speciality(Integer.parseInt(rs.getString("Id")), Integer.parseInt(rs.getString("Специальность")),Integer.parseInt(rs.getString("Зарплата")),Integer.parseInt(rs.getString("Человек")));
+                list.add(speciality);
+            }
+        }catch (SQLException | ClassNotFoundException ex){
+            ex.printStackTrace();
+        }
+        return list;
     }
 }

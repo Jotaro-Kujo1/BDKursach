@@ -14,7 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Unemployed;
 
-public class GetPeopleForGenderController implements ToGetError{
+public class GetPeopleForGenderController implements ToGetError, ToPane{
 
     private DataBaseHandler db = new DataBaseHandler();
     private UnemplDomain unemplDomain = new UnemplDomain();
@@ -162,14 +162,14 @@ public class GetPeopleForGenderController implements ToGetError{
     @FXML
     private MenuItem getPeopleForGender;
 
-    @FXML
-    private MenuItem getPeopleForSpeciality;
+    //@FXML
+    //private MenuItem getPeopleForSpeciality;
 
     @FXML
     private MenuItem getSpecialityForPeople;
 
-    @FXML
-    private MenuItem getVacancyAndPeopleMatch;
+    //@FXML
+    //private MenuItem getVacancyAndPeopleMatch;
 
     @FXML
     private Button getButton;
@@ -206,6 +206,133 @@ public class GetPeopleForGenderController implements ToGetError{
             }else toGerErrorModWindw();
             genderTextArea.clear();
         });
+        addUnempButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addUnemplPane.fxml");
+        });
+        addSpecialityButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addSpecialityPane.fxml");
+        });
+        addSkillButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addSkillPane.fxml");
+        });
+        addVacancyButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addVacancyPane.fxml");
+        });
+        addOfficeButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addOfficePane.fxml");
+        });
+        addCountryButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addCountryPane.fxml");
+        });
+        addEducationButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addEducationPane.fxml");
+        });
+        addCompanyButton.setOnAction(event -> {
+            addMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/addCompanyPane.fxml");
+        });
 
+        deleteUnempButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteUnemplPane.fxml");
+        });
+        deleteSpecialityButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteSpecialityPane.fxml");
+        });
+        deleteSkillButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteSkillPane.fxml");
+        });
+        deleteVacancyButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteVacancyPane.fxml");
+        });
+        deleteOfficeButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteOfficePane.fxml");
+        });
+        deleteCountryButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteCountryPane.fxml");
+        });
+        deleteEducationButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteEducationPane.fxml");
+        });
+        deleteCompanyButton.setOnAction(event -> {
+            deleteMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/deleteCompanyPane.fxml");
+        });
+
+        getUnempButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getUnemplPane.fxml");
+        });
+        getSpecialityButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getSpecialityPane.fxml");
+        });
+        getSkillButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getSkillPane.fxml");
+        });
+        getVacancyButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getVacancyPane.fxml");
+        });
+        getOfficeButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getOfficePane.fxml");
+        });
+        getCountryButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getCountryPane.fxml");
+        });
+        getEducationButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getEducationPane.fxml");
+        });
+        getCompanyButton.setOnAction(event -> {
+            getMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getCompanyPane.fxml");
+        });
+        getFromCountry.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getFromCountryPane.fxml");
+        });
+        getWithEducation.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getWithEducationPane.fxml");
+        });
+        getSomeAge.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getSomeAgePane.fxml");
+        });
+        /*
+        getPeopleForSpeciality.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getPeopleForSpecialityPane.fxml");
+        });
+
+         */
+        getSpecialityForPeople.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
+        });
+        /*
+        getVacancyAndPeopleMatch.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getVacancyAndPeopleMatchPane.fxml");
+        });
+
+         */
     }
 }
