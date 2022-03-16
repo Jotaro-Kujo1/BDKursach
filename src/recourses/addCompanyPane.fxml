@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1051.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddCompanyController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="692.0" prefWidth="1051.0" style="-fx-background-color: #ADD8E6;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddCompanyController">
     <children>
         <TableView fx:id="companyTable" layoutX="440.0" layoutY="87.0" prefHeight="413.0" prefWidth="149.0">
             <columns>
@@ -12,7 +17,7 @@
 
             </columns>
         </TableView>
-        <MenuButton fx:id="addMainButton" layoutY="-2.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="134.0" style="-fx-background-color: #696969;" text="Добавить" textAlignment="CENTER" textFill="WHITE">
+        <MenuButton fx:id="addMainButton" layoutX="50.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="171.0" style="-fx-background-color: #696969;" text="Добавить" textAlignment="CENTER" textFill="WHITE">
             <items>
                 <MenuItem fx:id="addUnempButton" mnemonicParsing="false" text="Добавить безработного" />
                 <MenuItem fx:id="addSpecialityButton" mnemonicParsing="false" text="Добавить специальность" />
@@ -24,7 +29,7 @@
                 <MenuItem fx:id="addCompanyButton" mnemonicParsing="false" text="Добавить предприятие" />
             </items>
         </MenuButton>
-        <MenuButton fx:id="deleteMainButton" layoutX="134.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="134.0" style="-fx-background-color: #696969;" text="Удалить" textAlignment="CENTER" textFill="WHITE">
+        <MenuButton fx:id="deleteMainButton" layoutX="304.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="171.0" style="-fx-background-color: #696969;" text="Удалить" textAlignment="CENTER" textFill="WHITE">
             <items>
                 <MenuItem fx:id="deleteUnempButton" mnemonicParsing="false" text="Удалить безработного" />
                 <MenuItem fx:id="deleteSpecialityButton" mnemonicParsing="false" text="Удалить специальность" />
@@ -36,7 +41,7 @@
                 <MenuItem fx:id="deleteCompanyButton" mnemonicParsing="false" text="Удалить предприятие" />
             </items>
         </MenuButton>
-        <MenuButton fx:id="getMainButton" layoutX="478.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="171.0" style="-fx-background-color: #696969;" text="Получить" textAlignment="CENTER" textFill="WHITE">
+        <MenuButton fx:id="getMainButton" layoutX="564.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="171.0" style="-fx-background-color: #696969;" text="Получить" textAlignment="CENTER" textFill="WHITE">
             <items>
                 <MenuItem fx:id="getUnempButton" mnemonicParsing="false" text="Получить безработного" />
                 <MenuItem fx:id="getSpecialityButton" mnemonicParsing="false" text="Получить специальность" />
@@ -46,6 +51,17 @@
                 <MenuItem fx:id="getCountryButton" mnemonicParsing="false" text="Получить страну" />
                 <MenuItem fx:id="getEducationButton" mnemonicParsing="false" text="Получить образование" />
                 <MenuItem fx:id="getCompanyButton" mnemonicParsing="false" text="Получить предприятие" />
+            </items>
+        </MenuButton>
+        <MenuButton fx:id="customMainButton" layoutX="831.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="171.0" style="-fx-background-color: #696969;" text="Другое" textAlignment="CENTER" textFill="WHITE">
+            <items>
+                <MenuItem fx:id="getFromCountry" mnemonicParsing="false" text="Получить людей из страны..." />
+                <MenuItem fx:id="getWithEducation" mnemonicParsing="false" text="Получить людей собразованием..." />
+                <MenuItem fx:id="getSomeAge" mnemonicParsing="false" text="Получить людей возраста..." />
+                <MenuItem fx:id="getPeopleForGender" mnemonicParsing="false" text="Получить людей пола..." />
+                <MenuItem fx:id="getPeopleForSpeciality" mnemonicParsing="false" text="Получить людей по специальности..." />
+                <MenuItem fx:id="getSpecialityForPeople" mnemonicParsing="false" text="Получить специальности по человеку..." />
+                <MenuItem fx:id="getVacancyAndPeopleMatch" mnemonicParsing="false" text="Получить совпадения вакансий и людей" />
             </items>
         </MenuButton>
         <Button fx:id="addButton" layoutX="447.0" layoutY="621.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="134.0" style="-fx-background-color: #696969;" text="Добавить" textFill="WHITE" />

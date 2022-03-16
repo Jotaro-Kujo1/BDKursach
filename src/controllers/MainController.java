@@ -232,31 +232,31 @@ public class MainController implements ToPane{
 
 
         getFromCountry.setOnAction(event -> {
-            getMainButton.getScene().getWindow().hide();
+            customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getFromCountryPane.fxml");
         });
         getWithEducation.setOnAction(event -> {
-            getMainButton.getScene().getWindow().hide();
+            customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getWithEducationPane.fxml");
         });
         getSomeAge.setOnAction(event -> {
-            getMainButton.getScene().getWindow().hide();
+            customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getSomeAgePane.fxml");
         });
         getPeopleForGender.setOnAction(event -> {
-            getMainButton.getScene().getWindow().hide();
+            customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getPeopleForGenderPane.fxml");
         });
         getPeopleForSpeciality.setOnAction(event -> {
-            getMainButton.getScene().getWindow().hide();
+            customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getPeopleForSpecialityPane.fxml");
         });
         getSpecialityForPeople.setOnAction(event -> {
-            getMainButton.getScene().getWindow().hide();
+            customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
         });
         getVacancyAndPeopleMatch.setOnAction(event -> {
-            getMainButton.getScene().getWindow().hide();
+            customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getVacancyAndPeopleMatchPane.fxml");
         });
 

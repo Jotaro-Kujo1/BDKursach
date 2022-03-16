@@ -122,6 +122,30 @@ public class AddCountryController implements ToPane{
     private MenuItem getCompanyButton;
 
     @FXML
+    private MenuButton customMainButton;
+
+    @FXML
+    private MenuItem getFromCountry;
+
+    @FXML
+    private MenuItem getWithEducation;
+
+    @FXML
+    private MenuItem getSomeAge;
+
+    @FXML
+    private MenuItem getPeopleForGender;
+
+    @FXML
+    private MenuItem getPeopleForSpeciality;
+
+    @FXML
+    private MenuItem getSpecialityForPeople;
+
+    @FXML
+    private MenuItem getVacancyAndPeopleMatch;
+
+    @FXML
     private Button addButton;
 
     @FXML
@@ -243,6 +267,35 @@ public class AddCountryController implements ToPane{
         getCompanyButton.setOnAction(event -> {
             getMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getCompanyPane.fxml");
+        });
+
+        getFromCountry.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getFromCountryPane.fxml");
+        });
+        getWithEducation.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getWithEducationPane.fxml");
+        });
+        getSomeAge.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getSomeAgePane.fxml");
+        });
+        getPeopleForGender.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getPeopleForGenderPane.fxml");
+        });
+        getPeopleForSpeciality.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getPeopleForSpecialityPane.fxml");
+        });
+        getSpecialityForPeople.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
+        });
+        getVacancyAndPeopleMatch.setOnAction(event -> {
+            customMainButton.getScene().getWindow().hide();
+            toAddPane("../recourses/getVacancyAndPeopleMatchPane.fxml");
         });
     }
 
