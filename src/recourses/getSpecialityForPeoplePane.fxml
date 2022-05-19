@@ -62,6 +62,7 @@
                 <MenuItem fx:id="getSomeAge" mnemonicParsing="false" text="Получить людей возраста..." />
                 <MenuItem fx:id="getPeopleForGender" mnemonicParsing="false" text="Получить людей пола..." />
                 <MenuItem fx:id="getSpecialityForPeople" mnemonicParsing="false" text="Получить специальности по человеку..." />
+                <MenuItem fx:id="getJSON" mnemonicParsing="false" text="Сформировать JSON безработных" />
             </items>
         </MenuButton>
         <Button fx:id="getButton" layoutX="459.0" layoutY="621.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="134.0" style="-fx-background-color: #696969;" text="Получить" textFill="WHITE" />

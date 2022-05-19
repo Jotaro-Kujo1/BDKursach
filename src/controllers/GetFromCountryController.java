@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -14,7 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Country;
 import pojo.Unemployed;
 
-public class GetFromCountryController implements ToGetError, ToPane{
+public class GetFromCountryController implements ToGetError, ToPane, ToJson{
 
     private CountryDomain countryDomain = new CountryDomain();
     private UnemplDomain unemplDomain = new UnemplDomain();
@@ -167,6 +168,9 @@ public class GetFromCountryController implements ToGetError, ToPane{
 
     @FXML
     private MenuItem getSpecialityForPeople;
+
+    @FXML
+    private MenuItem getJSON;
 
     //@FXML
     //private MenuItem getVacancyAndPeopleMatch;
@@ -332,6 +336,14 @@ public class GetFromCountryController implements ToGetError, ToPane{
         getSpecialityForPeople.setOnAction(event -> {
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
+        });
+        getJSON.setOnAction(event -> {
+            try {
+                Runtime.getRuntime().exec("C:\\Javist\\BDKurs\\Util\\Utility\\Utility\\bin\\Debug\\netcoreapp3.1\\Utility.exe");
+                toGetJsonModWindw();
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
         });
         /*
         getVacancyAndPeopleMatch.setOnAction(event -> {

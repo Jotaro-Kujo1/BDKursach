@@ -69,9 +69,11 @@
             <MenuItem fx:id="getSomeAge" mnemonicParsing="false" text="Получить людей возраста..." />
             <MenuItem fx:id="getPeopleForGender" mnemonicParsing="false" text="Получить людей пола..." />
             <MenuItem fx:id="getSpecialityForPeople" mnemonicParsing="false" text="Получить специальности по человеку..." />
+            <MenuItem fx:id="getJSON" mnemonicParsing="false" text="Сформировать JSON безработных" />
          </items>
       </MenuButton>
       <Button fx:id="addButton" layoutX="447.0" layoutY="621.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="134.0" style="-fx-background-color: #696969;" text="Добавить" textFill="WHITE" />
+      <Button fx:id="JSONButton" layoutX="600.0" layoutY="621.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="134.0" style="-fx-background-color: #696969;" text="JSON" textFill="WHITE" />
       <TextField fx:id="IdTextArea" layoutX="67.0" layoutY="522.0" promptText="Id" />
       <TextField fx:id="surnameTextArea" layoutX="216.0" layoutY="522.0" promptText="Фамилия" />
       <TextField fx:id="ageTextArea" layoutX="663.0" layoutY="522.0" promptText="Возраст" />

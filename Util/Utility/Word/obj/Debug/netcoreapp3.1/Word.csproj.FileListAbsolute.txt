@@ -1,0 +1,16 @@
+C:\Javist\BDKurs\Util\Utility\Word\bin\Debug\netcoreapp3.1\Word.exe
+C:\Javist\BDKurs\Util\Utility\Word\bin\Debug\netcoreapp3.1\Word.deps.json
+C:\Javist\BDKurs\Util\Utility\Word\bin\Debug\netcoreapp3.1\Word.runtimeconfig.json
+C:\Javist\BDKurs\Util\Utility\Word\bin\Debug\netcoreapp3.1\Word.runtimeconfig.dev.json
+C:\Javist\BDKurs\Util\Utility\Word\bin\Debug\netcoreapp3.1\Word.dll
+C:\Javist\BDKurs\Util\Utility\Word\bin\Debug\netcoreapp3.1\Word.pdb
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.csproj.AssemblyReference.cache
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.Form1.resources
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.csproj.GenerateResource.cache
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.GeneratedMSBuildEditorConfig.editorconfig
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.AssemblyInfoInputs.cache
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.AssemblyInfo.cs
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.csproj.CoreCompileInputs.cache
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.dll
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.pdb
+C:\Javist\BDKurs\Util\Utility\Word\obj\Debug\netcoreapp3.1\Word.genruntimeconfig.cache

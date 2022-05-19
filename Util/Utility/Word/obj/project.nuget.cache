@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "SmEYg5UvAWvaQKTNahjEnkzr1IGe73cD2Fv0Sp1/Z5XTUmz4OeUTCCygYI3W3e11QCofdrj6c3oYwcLWwbZPSA==",
+  "success": true,
+  "projectFilePath": "C:\\Javist\\BDKurs\\Util\\Utility\\Word\\Word.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bucel\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.23\\microsoft.netcore.app.host.win-x64.3.1.23.nupkg.sha512"
+  ],
+  "logs": []
+}

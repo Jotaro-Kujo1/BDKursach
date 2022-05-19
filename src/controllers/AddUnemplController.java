@@ -1,5 +1,8 @@
 package controllers;
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -9,10 +12,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Unemployed;
 
-public class AddUnemplController implements ToPane{
+public class AddUnemplController implements ToPane, ToJson{
 
     private ObservableList<Unemployed> osList = FXCollections.observableArrayList();
 
@@ -175,6 +181,9 @@ public class AddUnemplController implements ToPane{
     @FXML
     private MenuItem getSpecialityForPeople;
 
+    @FXML
+    private MenuItem getJSON;
+
     //@FXML
     //private MenuItem getVacancyAndPeopleMatch;
 
@@ -218,6 +227,9 @@ public class AddUnemplController implements ToPane{
     private Button addButton;
 
     @FXML
+    private Button JSONButton;
+
+    @FXML
     void initialize() {
         idColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,Integer>("id"));
         surnameColumn.setCellValueFactory(new PropertyValueFactory<Unemployed,String>("surname"));
@@ -250,7 +262,15 @@ public class AddUnemplController implements ToPane{
             clearTextBox();
         });
 
-
+        JSONButton.setOnMouseEntered(event -> JSONButton.setStyle("-fx-background-color: #808080;"));
+        JSONButton.setOnMouseExited(event -> JSONButton.setStyle("-fx-background-color: #696969;"));
+        JSONButton.setOnAction(event -> {
+            try {
+                Runtime.getRuntime().exec("C:\\Javist\\BDKurs\\Util\\Utility\\Utility\\bin\\Debug\\netcoreapp3.1\\Utility.exe");
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
+        });
 
 
         addSpecialityButton.setOnAction(event -> {
@@ -372,6 +392,14 @@ public class AddUnemplController implements ToPane{
         getSpecialityForPeople.setOnAction(event -> {
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
+        });
+        getJSON.setOnAction(event -> {
+            try {
+                Runtime.getRuntime().exec("C:\\Javist\\BDKurs\\Util\\Utility\\Utility\\bin\\Debug\\netcoreapp3.1\\Utility.exe");
+                toGetJsonModWindw();
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
         });
         /*
         getVacancyAndPeopleMatch.setOnAction(event -> {

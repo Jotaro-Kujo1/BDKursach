@@ -10,11 +10,12 @@ import pojo.Speciality;
 import pojo.Vacancy;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddVacancyController implements ToPane{
+public class AddVacancyController implements ToPane, ToJson{
 
     private ObservableList<Vacancy> osList = FXCollections.observableArrayList();
 
@@ -165,6 +166,9 @@ public class AddVacancyController implements ToPane{
 
     @FXML
     private MenuItem getSpecialityForPeople;
+
+    @FXML
+    private MenuItem getJSON;
 
     //@FXML
     //private MenuItem getVacancyAndPeopleMatch;
@@ -343,6 +347,14 @@ public class AddVacancyController implements ToPane{
         getSpecialityForPeople.setOnAction(event -> {
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
+        });
+        getJSON.setOnAction(event -> {
+            try {
+                Runtime.getRuntime().exec("C:\\Javist\\BDKurs\\Util\\Utility\\Utility\\bin\\Debug\\netcoreapp3.1\\Utility.exe");
+                toGetJsonModWindw();
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
         });
         /*
         getVacancyAndPeopleMatch.setOnAction(event -> {

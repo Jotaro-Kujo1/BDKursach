@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -13,7 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojo.Unemployed;
 
-public class GetUnemplController implements ToPane, ToGetError{
+public class GetUnemplController implements ToPane, ToGetError, ToJson{
 
     private ObservableList<Unemployed> osList = FXCollections.observableArrayList();
 
@@ -167,6 +168,9 @@ public class GetUnemplController implements ToPane, ToGetError{
 
     @FXML
     private MenuItem getSpecialityForPeople;
+
+    @FXML
+    private MenuItem getJSON;
 
     //@FXML
     //private MenuItem getVacancyAndPeopleMatch;
@@ -326,6 +330,14 @@ public class GetUnemplController implements ToPane, ToGetError{
         getSpecialityForPeople.setOnAction(event -> {
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
+        });
+        getJSON.setOnAction(event -> {
+            try {
+                Runtime.getRuntime().exec("C:\\Javist\\BDKurs\\Util\\Utility\\Utility\\bin\\Debug\\netcoreapp3.1\\Utility.exe");
+                toGetJsonModWindw();
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
         });
         /*
         getVacancyAndPeopleMatch.setOnAction(event -> {

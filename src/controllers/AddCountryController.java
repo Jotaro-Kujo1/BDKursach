@@ -11,11 +11,12 @@ import pojo.Company;
 import pojo.Country;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddCountryController implements ToPane{
+public class AddCountryController implements ToPane, ToJson{
 
     private ObservableList<Country> osList = FXCollections.observableArrayList();
 
@@ -141,6 +142,9 @@ public class AddCountryController implements ToPane{
 
     @FXML
     private MenuItem getSpecialityForPeople;
+
+    @FXML
+    private MenuItem getJSON;
 
     //@FXML
     //private MenuItem getVacancyAndPeopleMatch;
@@ -294,6 +298,14 @@ public class AddCountryController implements ToPane{
         getSpecialityForPeople.setOnAction(event -> {
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
+        });
+        getJSON.setOnAction(event -> {
+            try {
+                Runtime.getRuntime().exec("C:\\Javist\\BDKurs\\Util\\Utility\\Utility\\bin\\Debug\\netcoreapp3.1\\Utility.exe");
+                toGetJsonModWindw();
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
         });
         /*
         getVacancyAndPeopleMatch.setOnAction(event -> {

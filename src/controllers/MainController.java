@@ -12,7 +12,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MainController implements ToPane{
+public class MainController implements ToPane, ToJson{
 
     @FXML
     private ResourceBundle resources;
@@ -121,6 +121,9 @@ public class MainController implements ToPane{
 
     @FXML
     private MenuItem getSpecialityForPeople;
+
+    @FXML
+    private MenuItem getJSON;
 
     //@FXML
     //private MenuItem getVacancyAndPeopleMatch;
@@ -257,6 +260,14 @@ public class MainController implements ToPane{
         getSpecialityForPeople.setOnAction(event -> {
             customMainButton.getScene().getWindow().hide();
             toAddPane("../recourses/getSpecialityForPeoplePane.fxml");
+        });
+        getJSON.setOnAction(event -> {
+            try {
+                Runtime.getRuntime().exec("C:\\Javist\\BDKurs\\Util\\Utility\\Utility\\bin\\Debug\\netcoreapp3.1\\Utility.exe");
+                toGetJsonModWindw();
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
         });
         /*
         getVacancyAndPeopleMatch.setOnAction(event -> {
